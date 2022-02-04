@@ -1,0 +1,27 @@
+# Indicamos la versión
+version: '3.7'
+
+# Mis servicios
+# Iniciamos los servicios
+services:
+  # MONGO DB
+  taller-server:
+    image: mongo
+    container_name: taller-server
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: taller
+      MONGO_INITDB_ROOT_PASSWORD: taller123
+      MONGO_INITDB_DATABASE: Taller2Dam
+      # ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    #command: --auth
+    # Monto la unidad y le cargo unos datos
+    #volumes:
+    #  - ./init:/docker-entrypoint-initdb.d
+    #  - mongo-vol:/data/db
+    #networks:
+    #  - mongo-network
+    # restart: always
