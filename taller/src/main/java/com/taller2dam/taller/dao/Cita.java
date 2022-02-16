@@ -11,11 +11,11 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ticket")
-@NamedQuery(name = "ticket.findAll", query = "SELECT t FROM Ticket t")
-public class Ticket {
+@Table(name = "cita")
+@NamedQuery(name = "cita.findAll", query = "SELECT c FROM Cita c")
+public class Cita {
 
-    private UUID id;
+    private long id;
     private Double precio;
     private LocalDateTime fecha;
     private Usuario usuario;
@@ -23,8 +23,8 @@ public class Ticket {
     private Servicio servicio;
 
     @Id
-    public UUID getId() {return id;}
-    public void setId(UUID id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Basic
     @Column(name = "precio")

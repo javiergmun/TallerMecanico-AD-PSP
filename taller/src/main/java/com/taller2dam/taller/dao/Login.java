@@ -13,16 +13,14 @@ import java.util.UUID;
 @NamedQuery(name = "login.findAll", query = "SELECT l FROM Login l")
 public class Login {
 
-    private UUID id;
+    private long id;
     private String correo;
     private String password;    //Cifrarla o hacer que no se muestre
-    private Integer telefono;
-    private Direccion direccion;
     private String token;
 
     @Id
-    public UUID getId() {return id;}
-    public void setId(UUID id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Basic
     @Column(name = "correo")
@@ -35,16 +33,6 @@ public class Login {
     public void setPassword(String password) {this.password = password;}
 
     @Basic
-    @Column(name = "teléfono")
-    public int getTelefono() {return telefono;}
-    public void setTelefono(int phone) {this.telefono = phone;}
-
-    @OneToOne
-    @JoinColumn(name = "dirección", referencedColumnName = "id")
-    public Direccion getDireccion() {return direccion;}
-    public void setDireccion(Direccion address) {this.direccion = address;}
-
-    @Basic
     @Column(name = "token")
     public String getToken() {return token;}
     public void setToken(String token) {this.token = token;}
@@ -55,8 +43,6 @@ public class Login {
                 "id=" + id +
                 ", correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
-                ", telefono=" + telefono +
-                ", direccion='" + direccion + '\'' +
                 ", token='" + token + '\'' +
                 '}';
     }
