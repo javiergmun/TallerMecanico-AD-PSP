@@ -16,7 +16,7 @@ import java.util.UUID;
 @NamedQuery(name = "servicio.findAll", query = "SELECT s FROM Servicio s")
 public class Servicio {
 
-    private UUID id;
+    private long id;
     private Double precio;
     private String tipo;
     private Double tiempo;
@@ -25,8 +25,8 @@ public class Servicio {
     private Set<Pieza> repuestos;   //recambios o materiales de nuestro taller (sino gusta se puede quitar)
 
     @Id
-    public UUID getId() {return id;}
-    public void setId(UUID id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Basic
     @Column(name = "precio")

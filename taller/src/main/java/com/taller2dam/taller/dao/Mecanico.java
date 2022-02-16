@@ -13,14 +13,14 @@ import java.util.UUID;
 @NamedQuery(name = "mecánico.findAll", query = "SELECT m FROM Mecanico m")
 public class Mecanico {
 
-    private UUID id;
+    private long id;
     private String nombre;
     private Double salario;
     private Servicio servicio;
 
     @Id
-    public UUID getId() {return id;}
-    public void setId(UUID id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Basic
     @Column(name = "nombre")
