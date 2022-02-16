@@ -1,4 +1,7 @@
 package com.taller2dam.taller.repository;
 
-public class LoginRepository {
+import com.taller2dam.taller.dao.Login;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LoginRepository extends JpaRepository<Login, Long> {
 }
