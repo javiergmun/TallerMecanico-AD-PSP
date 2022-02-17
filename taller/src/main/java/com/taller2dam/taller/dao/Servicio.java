@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "servicio")
 @NamedQuery(name = "servicio.findAll", query = "SELECT s FROM Servicio s")
 public class Servicio {

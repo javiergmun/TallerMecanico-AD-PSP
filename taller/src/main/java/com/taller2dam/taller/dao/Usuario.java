@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "usuario")
 @NamedQuery(name = "usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario {
