@@ -47,7 +47,7 @@ public class Servicio {
 
     @Basic
     @CreationTimestamp
-    @Column(name = "fecha_inico")
+    @Column(name = "fecha_inicio")
     public LocalDateTime getFecha_inicio() {return fecha_inicio;}
     public void setFecha_inicio(LocalDateTime fecha_inicio) {this.fecha_inicio = fecha_inicio;}
 
