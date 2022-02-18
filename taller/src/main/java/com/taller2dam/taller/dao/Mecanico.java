@@ -16,7 +16,7 @@ public class Mecanico {
     private long id;
     private String nombre;
     private Double salario;
-    private Servicio servicio;
+
 
     @Id
     public long getId() {return id;}
@@ -32,10 +32,6 @@ public class Mecanico {
     public Double getSalario() {return salario;}
     public void setSalario(Double salario) {this.salario = salario;}
 
-    @OneToOne
-    @JoinColumn(name = "servicio_asignado", referencedColumnName = "id")
-    public Servicio getServicio() {return servicio;}
-    public void setServicio(Servicio servicio) {this.servicio = servicio;}
 
     @Override
     public String toString() {
@@ -43,7 +39,6 @@ public class Mecanico {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", salario=" + salario +
-                ", servicio=" + servicio +
                 '}';
     }
 }
