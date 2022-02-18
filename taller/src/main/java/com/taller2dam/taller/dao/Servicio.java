@@ -24,37 +24,68 @@ public class Servicio {
     private Double tiempo;
     private LocalDateTime fecha_inicio;
     private LocalDateTime fecha_fin;
+    private boolean activo = true;
 
     @Id
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Basic
     @Column(name = "precio")
-    public Double getPrecio() {return precio;}
-    public void setPrecio(Double precio) {this.precio = precio;}
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
     @Basic
     @Column(name = "tipo")
-    public String getTipo() {return tipo;}
-    public void setTipo(String tipo) {this.tipo = tipo;}
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     @Basic
     @Column(name = "tiempo")
-    public Double getTiempo() {return tiempo;}
-    public void setTiempo(Double tiempo) {this.tiempo = tiempo;}
+    public Double getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(Double tiempo) {
+        this.tiempo = tiempo;
+    }
 
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_inicio")
-    public LocalDateTime getFecha_inicio() {return fecha_inicio;}
-    public void setFecha_inicio(LocalDateTime fecha_inicio) {this.fecha_inicio = fecha_inicio;}
+    public LocalDateTime getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(LocalDateTime fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
 
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_fin")
-    public LocalDateTime getFecha_fin() {return fecha_fin;}
-    public void setFecha_fin(LocalDateTime fecha_fin) {this.fecha_fin = fecha_fin;}
+    public LocalDateTime getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public void setFecha_fin(LocalDateTime fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
 
 
     @Override

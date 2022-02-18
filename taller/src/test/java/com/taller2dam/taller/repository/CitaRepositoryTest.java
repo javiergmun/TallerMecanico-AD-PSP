@@ -41,7 +41,6 @@ class CitaRepositoryTest {
     @Test
     @Order(2)
     public void getAllCitas() {
-        //Solo para el administrador
         assertTrue(citaRepository.findAll().size() > 0);
     }
 
