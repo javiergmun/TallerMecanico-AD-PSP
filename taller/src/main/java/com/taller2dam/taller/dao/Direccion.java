@@ -2,11 +2,13 @@ package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "direccion")
@@ -20,6 +22,7 @@ public class Direccion {
     private String localidad;
 
     @Id
+    @GeneratedValue
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 

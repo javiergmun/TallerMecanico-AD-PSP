@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "servicio")
 @NamedQuery(name = "servicio.findAll", query = "SELECT s FROM Servicio s")
 public class Servicio {
@@ -45,7 +47,7 @@ public class Servicio {
 
     @Basic
     @CreationTimestamp
-    @Column(name = "fecha_inico")
+    @Column(name = "fecha_inicio")
     public LocalDateTime getFecha_inicio() {return fecha_inicio;}
     public void setFecha_inicio(LocalDateTime fecha_inicio) {this.fecha_inicio = fecha_inicio;}
 

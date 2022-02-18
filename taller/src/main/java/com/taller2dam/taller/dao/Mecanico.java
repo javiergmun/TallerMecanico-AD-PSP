@@ -9,8 +9,8 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "mecánico")
-@NamedQuery(name = "mecánico.findAll", query = "SELECT m FROM Mecanico m")
+@Table(name = "mecanico")
+@NamedQuery(name = "mecanico.findAll", query = "SELECT m FROM Mecanico m")
 public class Mecanico {
 
     private long id;

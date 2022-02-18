@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "cita")
 @NamedQuery(name = "cita.findAll", query = "SELECT c FROM Cita c")
 public class Cita {
@@ -43,7 +45,7 @@ public class Cita {
     public void setUsuario(Usuario usuario) {this.usuario = usuario;}
 
     @OneToOne
-    @JoinColumn(name = "mecánico", referencedColumnName = "id")
+    @JoinColumn(name = "mecanico", referencedColumnName = "id")
     public Mecanico getMecanico() {return mecanico;}
     public void setMecanico(Mecanico mecanico) {this.mecanico = mecanico;}
 

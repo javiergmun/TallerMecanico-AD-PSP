@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "usuario")
 @NamedQuery(name = "usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario {
@@ -43,12 +45,12 @@ public class Usuario {
     public void setAdministrador(Boolean administrador) {this.administrador = administrador;}
 
     @Basic
-    @Column(name = "teléfono")
+    @Column(name = "telefono")
     public int getTelefono() {return telefono;}
     public void setTelefono(int phone) {this.telefono = phone;}
 
     @OneToOne
-    @JoinColumn(name = "dirección", referencedColumnName = "id")
+    @JoinColumn(name = "direccion", referencedColumnName = "id")
     public Direccion getDireccion() {return direccion;}
     public void setDireccion(Direccion address) {this.direccion = address;}
 
