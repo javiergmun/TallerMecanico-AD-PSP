@@ -24,7 +24,6 @@ public class Servicio {
     private Double tiempo;
     private LocalDateTime fecha_inicio;
     private LocalDateTime fecha_fin;
-    private Set<Pieza> repuestos;   //recambios o materiales de nuestro taller (sino gusta se puede quitar)
 
     @Id
     public long getId() {return id;}
@@ -57,9 +56,6 @@ public class Servicio {
     public LocalDateTime getFecha_fin() {return fecha_fin;}
     public void setFecha_fin(LocalDateTime fecha_fin) {this.fecha_fin = fecha_fin;}
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "servicio", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
-    public Set<Pieza> getRepuestos() {return repuestos;}
-    public void setRepuestos(Set<Pieza> repuestos) {this.repuestos = repuestos;}
 
     @Override
     public String toString() {
@@ -70,7 +66,6 @@ public class Servicio {
                 ", tiempo=" + tiempo +
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_fin=" + fecha_fin +
-                ", repuestos=" + repuestos +
                 '}';
     }
 }
