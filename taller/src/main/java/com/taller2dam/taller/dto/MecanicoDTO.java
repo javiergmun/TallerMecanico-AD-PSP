@@ -1,5 +1,6 @@
 package com.taller2dam.taller.dto;
 
+import com.taller2dam.taller.dao.Servicio;
 import lombok.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,12 @@ import javax.validation.constraints.NotBlank;
 public class MecanicoDTO {
     private Long id;
 
-    @NotBlank(message = "El nombre no puede estar vacío")
+    @NotBlank(message = "Necesitas tener un nombre")
     private String nombre;
+
+    @Min(message = "El salario no puede ser negativo", value = 0)
+    private Double salario;
+
+    private Servicio servicio;
 
 }
