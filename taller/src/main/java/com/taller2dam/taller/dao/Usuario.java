@@ -22,7 +22,8 @@ public class Usuario {
     private Boolean administrador;
     private Integer telefono;
     private Direccion direccion;
-    private Login login;
+    private String correo;
+    private String password;    //Cifrarla o hacer que no se muestre
     private Set<Vehiculo> vehiculos;
 
     @Id
@@ -54,10 +55,15 @@ public class Usuario {
     public Direccion getDireccion() {return direccion;}
     public void setDireccion(Direccion address) {this.direccion = address;}
 
-    @OneToOne
-    @JoinColumn(name = "login", referencedColumnName = "id")
-    public Login getLogin() {return login;}
-    public void setLogin(Login login) {this.login = login;}
+    @Basic
+    @Column(name = "correo")
+    public String getCorreo() {return correo;}
+    public void setCorreo(String email) {this.correo = email;}
+
+    @Basic
+    @Column(name = "contraseña")
+    public String getPassword() {return password;}
+    public void setPassword(String password) {this.password = password;}
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
     public Set<Vehiculo> getVehiculos() {return vehiculos;}
@@ -72,7 +78,8 @@ public class Usuario {
                 ", administrador=" + administrador +
                 ", telefono=" + telefono +
                 ", direccion=" + direccion +
-                ", login=" + login +
+                ", correo='" + correo + '\'' +
+                ", password='" + password + '\'' +
                 ", vehiculos=" + vehiculos +
                 '}';
     }
