@@ -1,10 +1,15 @@
 package mapper;
 
+import com.taller2dam.taller.dao.Mecanico;
 import com.taller2dam.taller.dao.Vehiculo;
+import com.taller2dam.taller.dto.MecanicoDTO;
 import com.taller2dam.taller.dto.VehiculoDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -18,5 +23,9 @@ public class VehiculoMapper {
 
     public Vehiculo fromDTO(VehiculoDTO vehiculoDTO) {
         return modelMapper.map(vehiculoDTO, Vehiculo.class);
+    }
+
+    public List<VehiculoDTO> toDTO(List<Vehiculo> vehiculo) {
+        return vehiculo.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }

@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class CitaMapper {
@@ -22,6 +25,10 @@ public class CitaMapper {
     public Cita fromDTO(CitaDTO citaDTO) {
         return modelMapper.map(citaDTO, Cita.class);
 
+    }
+
+    public List<CitaDTO> toDTO(List<Cita> cita) {
+        return cita.stream().map(this::toDTO).collect(Collectors.toList());
     }
 
 }
