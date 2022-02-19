@@ -13,24 +13,26 @@ import java.util.UUID;
 @NamedQuery(name = "login.findAll", query = "SELECT l FROM Login l")
 public class Login {
 
-    private Long id;
+    private long id;
     private Boolean activo;
     private String token;
-    private Usuario usuario;
+    //private Usuario usuario;
 
     @Id
-    public Long getId() {return id;}
-    public void setId(Long id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Basic
     @Column(name="esta_activo")
     public Boolean getActivo() {return activo;}
     public void setActivo(Boolean activo) {this.activo = activo;}
-
+/*
     @OneToOne
     @JoinColumn(name = "usuario", referencedColumnName = "id")
     public Usuario getUsuario() {return usuario;}
     public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+
+ */
 
     @Basic
     @Column(name = "token")
@@ -43,7 +45,7 @@ public class Login {
                 "id=" + id +
                 ", activo=" + activo +
                 ", token='" + token + '\'' +
-                ", usuario=" + usuario +
+                //", usuario=" + usuario +
                 '}';
     }
 }

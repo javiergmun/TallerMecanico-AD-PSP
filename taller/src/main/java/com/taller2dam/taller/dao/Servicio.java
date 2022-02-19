@@ -30,7 +30,6 @@ public class Servicio {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -40,7 +39,6 @@ public class Servicio {
     public Double getPrecio() {
         return precio;
     }
-
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
@@ -50,7 +48,6 @@ public class Servicio {
     public String getTipo() {
         return tipo;
     }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
@@ -60,7 +57,6 @@ public class Servicio {
     public Double getTiempo() {
         return tiempo;
     }
-
     public void setTiempo(Double tiempo) {
         this.tiempo = tiempo;
     }
@@ -71,7 +67,6 @@ public class Servicio {
     public LocalDateTime getFecha_inicio() {
         return fecha_inicio;
     }
-
     public void setFecha_inicio(LocalDateTime fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
@@ -82,7 +77,6 @@ public class Servicio {
     public LocalDateTime getFecha_fin() {
         return fecha_fin;
     }
-
     public void setFecha_fin(LocalDateTime fecha_fin) {
         this.fecha_fin = fecha_fin;
     }

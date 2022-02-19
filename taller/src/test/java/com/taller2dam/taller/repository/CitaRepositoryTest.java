@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CitaRepositoryTest {
 
     private final Cita citaTest = Cita.builder().
-            id(1L).
+            id(10).
             precio(70.0).
             build();
 
@@ -41,6 +41,7 @@ class CitaRepositoryTest {
     @Test
     @Order(2)
     public void getAllCitas() {
+        //Solo para el administrador
         assertTrue(citaRepository.findAll().size() > 0);
     }
 

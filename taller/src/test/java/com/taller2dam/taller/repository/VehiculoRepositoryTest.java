@@ -1,6 +1,5 @@
 package com.taller2dam.taller.repository;
 
-import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dao.Vehiculo;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,98 +16,88 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 public class VehiculoRepositoryTest {
-    private Vehiculo VehiculoTest;
-    private Usuario usuarioTest;
 
-    @Autowired
-    private VehiculoRepository VehiculoRepository;
-
-    @BeforeEach
-    void setUp() {
-        usuarioTest = Usuario.builder()
-                .id(1L)
-                .dni("685933P")
-                .nombre("Usuario Test")
-                .administrador(false)
-                .telefono(43439734)
-                .build();
-
-        VehiculoTest = Vehiculo.builder()
-                .id(10L)
+    private final Vehiculo vehiculoTestId = Vehiculo.builder()
+                .id(1)
                 .color("Rojo")
                 .marca("Marca Test")
                 .modelo("Modelo Test")
                 .matricula("263562LLG")
-                .propietario(usuarioTest)
                 .build();
 
-    }
+
+    @Autowired
+    private VehiculoRepository vehiculoRepository;
 
     @Test
     @Order(1)
     public void save() {
-        Vehiculo vehiculo = VehiculoRepository.save(VehiculoTest);
+        Vehiculo vehiculo = vehiculoRepository.save(vehiculoTestId);
 
         assertAll(
                 () -> assertNotNull(vehiculo),
-                () -> assertEquals(VehiculoTest.getId(), vehiculo.getId()),
-                () -> assertEquals(VehiculoTest.getColor(), vehiculo.getColor()),
-                () -> assertEquals(VehiculoTest.getMatricula(), vehiculo.getMatricula()),
-                () -> assertEquals(VehiculoTest.getPropietario(), vehiculo.getPropietario()),
-                () -> assertEquals(VehiculoTest.getMarca(), vehiculo.getMarca()),
-                () -> assertEquals(VehiculoTest.getModelo(), vehiculo.getModelo())
+                () -> assertEquals(vehiculoTestId.getId(), vehiculo.getId()),
+                () -> assertEquals(vehiculoTestId.getColor(), vehiculo.getColor()),
+                () -> assertEquals(vehiculoTestId.getMatricula(), vehiculo.getMatricula()),
+                () -> assertEquals(vehiculoTestId.getPropietario(), vehiculo.getPropietario()),
+                () -> assertEquals(vehiculoTestId.getMarca(), vehiculo.getMarca()),
+                () -> assertEquals(vehiculoTestId.getModelo(), vehiculo.getModelo())
         );
     }
 
     @Test
     @Order(2)
     public void getAllVehiculo() {
-        List<Vehiculo> vehiculos = VehiculoRepository.findAll();
+        List<Vehiculo> vehiculos = vehiculoRepository.findAll();
         assertAll(
                 () -> assertTrue(vehiculos.size() > 0),
-                () -> assertEquals(vehiculos.get(0).getId(), VehiculoTest.getId())
+                () -> assertEquals(vehiculos.get(0).getId(), vehiculoTestId.getId())
         );
     }
 
     @Test
     @Order(3)
     public void getVehiculoById() {
-        var vehiculo = VehiculoRepository.save(VehiculoTest);
-        var VehiculoId = VehiculoRepository.findById(vehiculo.getId()).get();
+        var vehiculo = vehiculoRepository.save(vehiculoTestId);
+        var vehiculoId = vehiculoRepository.findById(vehiculo.getId()).get();
 
         assertAll(
-                () -> assertNotNull(VehiculoId),
-                () -> assertEquals(vehiculo.getDni(), VehiculoId.getDni()),
-                () -> assertEquals(vehiculo.getNombre(), VehiculoId.getNombre()),
-                () -> assertEquals(vehiculo.getAdministrador(), VehiculoId.getAdministrador()),
-                () -> assertEquals(vehiculo.getTelefono(), VehiculoId.getTelefono())
+                () -> assertNotNull(vehiculoId),
+                () -> assertEquals(vehiculo.getId(), vehiculoId.getId()),
+                () -> assertEquals(vehiculo.getColor(), vehiculoId.getColor()),
+                () -> assertEquals(vehiculo.getMatricula(), vehiculoId.getMatricula()),
+                () -> assertEquals(vehiculo.getPropietario(), vehiculoId.getPropietario()),
+                () -> assertEquals(vehiculo.getMarca(), vehiculoId.getMarca()),
+                () -> assertEquals(vehiculo.getModelo(), vehiculoId.getModelo())
         );
     }
 
     @Test
     @Order(4)
     public void updateVehiculo() {
-        var vehiculo = VehiculoRepository.save(VehiculoTest);
-        vehiculo = VehiculoRepository.findById(vehiculo.getId()).get();
-        vehiculo.setNombre("Vehiculo de prueba modificado");
+        var vehi = vehiculoRepository.save(vehiculoTestId);
+        vehi = vehiculoRepository.findById(vehi.getId()).get();
+        vehi.setMatricula("12345678890");
+        var res = vehiculoRepository.save(vehi);
 
-        var res = VehiculoRepository.save(vehiculo);
         assertAll(
                 () -> assertNotNull(res),
-                () -> assertEquals("Vehiculo de prueba modificado", res.getNombre()),
-                () -> assertEquals(VehiculoTest.getDni(), res.getDni()),
-                () -> assertEquals(VehiculoTest.getAdministrador(), res.getAdministrador()),
-                () -> assertEquals(VehiculoTest.getTelefono(), res.getTelefono())
+                () -> assertEquals(vehiculoTestId.getId(), res.getId()),
+                () -> assertEquals(vehiculoTestId.getColor(), res.getColor()),
+                () -> assertEquals("12345678890", res.getMatricula()),
+                () -> assertEquals(vehiculoTestId.getPropietario(), res.getPropietario()),
+                () -> assertEquals(vehiculoTestId.getMarca(), res.getMarca()),
+                () -> assertEquals(vehiculoTestId.getModelo(), res.getModelo())
         );
     }
 
     @Test
     @Order(5)
     public void deleteVehiculo() {
-        Vehiculo vehiculo = VehiculoRepository.save(VehiculoTest);
-        vehiculo = VehiculoRepository.findById(vehiculo.getId()).get();
-        VehiculoRepository.delete(vehiculo);
-        assertNull(VehiculoRepository.findById(vehiculo.getId()).orElse(null));
+        Vehiculo vehiculo = vehiculoRepository.save(vehiculoTestId);
+        vehiculo = vehiculoRepository.findById(vehiculo.getId()).get();
+        vehiculoRepository.delete(vehiculo);
+        assertNull(vehiculoRepository.findById(vehiculo.getId()).orElse(null));
     }
 
 }

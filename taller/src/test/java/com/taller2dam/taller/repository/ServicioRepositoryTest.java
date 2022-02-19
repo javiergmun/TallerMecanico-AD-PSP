@@ -1,6 +1,7 @@
 package com.taller2dam.taller.repository;
 
 import com.taller2dam.taller.dao.Servicio;
+import com.taller2dam.taller.dao.Usuario;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,27 +11,20 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 public class ServicioRepositoryTest {
-    private Servicio servicioTest;
 
+    private final Servicio servicioTest = Servicio.builder().
+            id(1).
+            precio(70.0).
+            tipo("Chapa y pintura").
+            tiempo(50.0).
+            build();
     @Autowired
     private ServicioRepository servicioRepository;
-
-    @BeforeEach
-    void setUp() {
-        servicioTest = Servicio.builder().
-                id(1L).
-                precio(70.0).
-                tipo("Chapa y pintura").
-                tiempo(50.0).
-                build();
-    }
 
     @Test
     @Order(1)
@@ -43,6 +37,7 @@ public class ServicioRepositoryTest {
                 () -> assertEquals(servicioTest.getPrecio(), servicio.getPrecio()),
                 () -> assertEquals(servicioTest.getTipo(), servicio.getTipo()),
                 () -> assertEquals(servicioTest.getTiempo(), servicio.getTiempo())
+
         );
     }
 
@@ -54,6 +49,9 @@ public class ServicioRepositoryTest {
                 () -> assertTrue(servicios.size() > 0),
                 () -> assertEquals(servicios.get(0).getId(), servicioTest.getId())
         );
+
+        //Servicio servicio = servicioRepository.save(servicioTest);
+        //assertTrue(servicioRepository.findAll().size() > 0);
     }
 
     @Test
@@ -70,7 +68,6 @@ public class ServicioRepositoryTest {
 
         );
     }
-
     @Test
     @Order(4)
     public void updateServicio() {
@@ -88,9 +85,22 @@ public class ServicioRepositoryTest {
         );
     }
 
+    //NO PERMITIR Y NO HACER DELETE DE LOS SERVICIOS
+    /*
     @Test
     @Order(5)
     public void deleteServicio() {
+        Servicio serv = servicioRepository.save(servicioTest);
+        serv = servicioRepository.findById(serv.getId()).get();
+        servicioRepository.delete(serv);
+        assertNull(servicioRepository.findById(serv.getId()).orElse(null));
+    }
+
+     */
+
+    @Test
+    @Order(5)
+    public void deleteServicioExcepcion() {
         Assertions.assertThrows(org.springframework.dao.DataIntegrityViolationException.class, () -> {
             servicioRepository.delete(servicioTest);
         });

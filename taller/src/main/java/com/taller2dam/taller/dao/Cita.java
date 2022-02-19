@@ -49,7 +49,7 @@ public class Cita {
     public void setMecanico(Mecanico mecanico) {this.mecanico = mecanico;}
 
     @OneToOne
-    @JoinColumn(name = "servicio", referencedColumnName = "id")
+    @JoinColumn(name = "servicio_contratado", referencedColumnName = "id")
     public Servicio getServicio() {return servicio;}
     public void setServicio(Servicio servicio) {this.servicio = servicio;}
 

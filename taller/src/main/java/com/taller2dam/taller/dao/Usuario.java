@@ -25,6 +25,7 @@ public class Usuario {
     private String correo;
     private String password;    //Cifrarla o hacer que no se muestre
     private Set<Vehiculo> vehiculos;
+    private Login login;
 
     @Id
     public long getId() {return id;}
@@ -69,6 +70,11 @@ public class Usuario {
     public Set<Vehiculo> getVehiculos() {return vehiculos;}
     public void setVehiculos(Set<Vehiculo> vehiculos) {this.vehiculos = vehiculos;}
 
+    @OneToOne
+    @JoinColumn(name = "login", referencedColumnName = "id")
+    public Login getLogin() {return login;}
+    public void setLogin(Login login) {this.login = login;}
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -81,6 +87,7 @@ public class Usuario {
                 ", correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
                 ", vehiculos=" + vehiculos +
+                ", login="+ login +
                 '}';
     }
 }
