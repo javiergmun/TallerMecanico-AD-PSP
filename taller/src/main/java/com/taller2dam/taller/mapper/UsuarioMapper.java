@@ -1,10 +1,8 @@
-package mapper;
+package com.taller2dam.taller.mapper;
 
 
 import com.taller2dam.taller.dao.Usuario;
-import com.taller2dam.taller.dao.Vehiculo;
 import com.taller2dam.taller.dto.UsuarioDTO;
-import com.taller2dam.taller.dto.VehiculoDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

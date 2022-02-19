@@ -1,4 +1,4 @@
-package mapper;
+package com.taller2dam.taller.mapper;
 
 import com.taller2dam.taller.dao.Servicio;
 import com.taller2dam.taller.dto.ServicioDTO;

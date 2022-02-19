@@ -1,8 +1,6 @@
-package mapper;
+package com.taller2dam.taller.mapper;
 
-import com.taller2dam.taller.dao.Mecanico;
 import com.taller2dam.taller.dao.Vehiculo;
-import com.taller2dam.taller.dto.MecanicoDTO;
 import com.taller2dam.taller.dto.VehiculoDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
