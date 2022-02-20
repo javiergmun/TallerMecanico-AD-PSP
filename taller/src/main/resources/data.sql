@@ -19,12 +19,12 @@ INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, tele
 VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 58568668, 1);
 
 
-INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario)
-VALUES(1,'rojo','BMV','6758','gGJ',2);
-INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario)
-VALUES(2,'negro','Citroen','78699b','C7',3);
-INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario)
-VALUES(10,'blanco','Test','78699b','Prueba',10);
+INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario, imagen)
+VALUES(1,'rojo','BMV','6758','gGJ',2, 'Esto es una Imagen');
+INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario, imagen)
+VALUES(2,'negro','Citroen','78699b','C7',3, 'Esto es una Imagen');
+INSERT INTO VEHICULO(id, color, marca, matricula, modelo, propietario, imagen)
+VALUES(10,'blanco','Test','78699b','Prueba',10, 'Esto es una Imagen');
 
 
 INSERT INTO SERVICIO(id, fecha_fin, fecha_inicio, precio, tiempo, tipo)
