@@ -66,7 +66,8 @@ public class Usuario {
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
+    @OneToMany
     public Set<Vehiculo> getVehiculos() {return vehiculos;}
     public void setVehiculos(Set<Vehiculo> vehiculos) {this.vehiculos = vehiculos;}
 

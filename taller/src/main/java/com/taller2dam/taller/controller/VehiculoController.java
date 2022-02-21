@@ -1,6 +1,6 @@
 package com.taller2dam.taller.controller;
 
-import com.taller2dam.taller.config.api.ApiConfig;
+import com.taller2dam.taller.config.ApiConfig;
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dao.Vehiculo;
 import com.taller2dam.taller.dto.VehiculoDTO;
@@ -10,6 +10,7 @@ import com.taller2dam.taller.service.VehiculoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,8 +26,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(ApiConfig.API_PATH + "/vehiculos")
-
+//@RequestMapping(ApiConfig.API_PATH + "/vehiculos")    //FALLA
 public class VehiculoController {
     private final VehiculoRepository vehiculoRepository;
     private final VehiculoService vehiculoService;
@@ -55,7 +55,7 @@ public class VehiculoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @GetMapping("/")
+    @GetMapping("/vehiculos")
     public ResponseEntity<List<VehiculoDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
                                                      @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
         List<Vehiculo> vehiculos = null;
@@ -90,7 +90,7 @@ public class VehiculoController {
             @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/{id}")
+    @GetMapping("/vehiculo/{id}")
     public ResponseEntity<VehiculoDTO> findById(@PathVariable Long id) {
         Vehiculo vehiculo = vehiculoRepository.findById(id).orElse(null);
         if (vehiculo == null) {
@@ -139,7 +139,7 @@ public class VehiculoController {
                 vehiculoActualizado.setModelo(vehiculo.getModelo());
                 vehiculoActualizado.setMatricula(vehiculo.getMatricula());
                 vehiculoActualizado.setColor(vehiculo.getColor());
-                vehiculoActualizado.setPropietario(vehiculo.getPropietario());
+                //vehiculoActualizado.setPropietario(vehiculo.getPropietario());
 
                 vehiculoActualizado = vehiculoRepository.save(vehiculoActualizado);
                 return ResponseEntity.ok(vehiculoMapper.toDTO(vehiculoActualizado));
@@ -193,9 +193,9 @@ public class VehiculoController {
         if (vehiculo.getColor() == null || vehiculo.getColor().isEmpty()) {
             throw new RuntimeException("El color es obligatorio");
         }
-        if (vehiculo.getPropietario() == null || vehiculo.getPropietario().getNombre().isEmpty()) {
-            throw new RuntimeException("El propiertario es obligatorio");
-        }
+        //if (vehiculo.getPropietario() == null || vehiculo.getPropietario().getNombre().isEmpty()) {
+          //  throw new RuntimeException("El propiertario es obligatorio");
+        //}
 
     }
 

@@ -20,7 +20,7 @@ public class Vehiculo {
     private String modelo;
     private String matricula;
     private String color;
-    private Usuario propietario;
+    //private Usuario propietario;
     private String imagen;
 
     @Id
@@ -66,7 +66,7 @@ public class Vehiculo {
     public void setColor(String color) {
         this.color = color;
     }
-
+/*
     @ManyToOne
     @JoinColumn(name = "propietario", referencedColumnName = "id")
     public Usuario getPropietario() {
@@ -75,6 +75,8 @@ public class Vehiculo {
     public void setPropietario(Usuario propietario) {
         this.propietario = propietario;
     }
+
+ */
 
     @Basic
     @Column(name = "imagen")
@@ -89,7 +91,7 @@ public class Vehiculo {
                 ", modelo='" + modelo + '\'' +
                 ", matricula='" + matricula + '\'' +
                 ", color='" + color + '\'' +
-                ", propietario=" + propietario +
+                //", propietario=" + propietario +
                 '}';
     }
 }

@@ -16,9 +16,7 @@ public class VehiculoService {
 
     //CONSULTAS CRUD BÁSICAS
 
-    public List<Vehiculo> findAllVehiculos() {
-        return vehiculoRepository.findAll();
-    }
+    public List<Vehiculo> findAllVehiculos() {return vehiculoRepository.findAll();}
 
     public Optional<Vehiculo> findVehiculoById(Long vehiculoId) {
         return vehiculoRepository.findById(vehiculoId);
@@ -39,7 +37,7 @@ public class VehiculoService {
             v.setModelo(vehiculoNuevo.getModelo());
             v.setMatricula(vehiculoNuevo.getMatricula());
             v.setColor(vehiculoNuevo.getColor());
-            v.setPropietario(vehiculoNuevo.getPropietario());
+            //v.setPropietario(vehiculoNuevo.getPropietario());
             vehiculoRepository.save(v);
 
         });

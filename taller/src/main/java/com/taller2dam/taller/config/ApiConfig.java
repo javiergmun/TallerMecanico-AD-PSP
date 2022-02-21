@@ -1,4 +1,4 @@
-package com.taller2dam.taller.config.api;
+package com.taller2dam.taller.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
