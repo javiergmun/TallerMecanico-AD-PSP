@@ -24,7 +24,7 @@ public class UsuarioRepositoryTest {
             .dni("685933P")
             .nombre("Usuario Test")
             .administrador(false)
-            .telefono(43439734)
+            .telefono("43439734")
             .build();
     @Autowired
     private UsuarioRepository usuarioRepository;
