@@ -10,13 +10,13 @@ VALUES(3,false,'ytf');
 
 
 INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(1, true, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 58568668, 1, 1);
+VALUES(1, true, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', '58568668', 1, 1);
 INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(2, false, 'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 58568668, 1, 2);
+VALUES(2, false, 'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', '58568668', 1, 2);
 INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(3, false, 'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 58568668, 1, 3);
+VALUES(3, false, 'user2@user.com', 'g7878giu', 'Javier', '5685tygku', '58568668', 1, 3);
 INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion)
-VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 58568668, 1);
+VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', '58568668', 1);
 
 
 INSERT INTO VEHICULO(id, color, marca, matricula, modelo, imagen)
