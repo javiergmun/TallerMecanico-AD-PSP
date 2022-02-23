@@ -24,7 +24,6 @@ public class Servicio {
     private Double tiempo;
     private LocalDateTime fecha_inicio;
     private LocalDateTime fecha_fin;
-    private boolean activo = true;
 
     @Id
     public long getId() {
