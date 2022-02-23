@@ -2,18 +2,21 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Vehiculo;
 import com.taller2dam.taller.repository.VehiculoRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class VehiculoService {
     VehiculoRepository vehiculoRepository;
 
 
     //CONSULTAS CRUD BÁSICAS
 
-    public List<Vehiculo> findAllVehiculos() {
-        return vehiculoRepository.findAll();
-    }
+    public List<Vehiculo> findAllVehiculos() {return vehiculoRepository.findAll();}
 
     public Optional<Vehiculo> findVehiculoById(Long vehiculoId) {
         return vehiculoRepository.findById(vehiculoId);
@@ -34,7 +37,7 @@ public class VehiculoService {
             v.setModelo(vehiculoNuevo.getModelo());
             v.setMatricula(vehiculoNuevo.getMatricula());
             v.setColor(vehiculoNuevo.getColor());
-            v.setPropietario(vehiculoNuevo.getPropietario());
+            //v.setPropietario(vehiculoNuevo.getPropietario());
             vehiculoRepository.save(v);
 
         });
@@ -43,7 +46,7 @@ public class VehiculoService {
     }
 
     public void deleteVehiculo(Vehiculo vehiculo) {
-         vehiculoRepository.delete(vehiculo);
+        vehiculoRepository.delete(vehiculo);
     }
 
 
