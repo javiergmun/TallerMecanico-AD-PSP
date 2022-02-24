@@ -2,9 +2,14 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Login;
 import com.taller2dam.taller.repository.LoginRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class LoginService {
     LoginRepository loginRepository;
 

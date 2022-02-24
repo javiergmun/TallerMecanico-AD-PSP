@@ -2,10 +2,14 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Mecanico;
 import com.taller2dam.taller.repository.MecanicoRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class MecanicoService {
     MecanicoRepository mecanicoRepository;
 

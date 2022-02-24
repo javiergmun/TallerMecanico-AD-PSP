@@ -18,8 +18,10 @@ public class CitaDTO {
 
 
     private long id;
-    @Min(message = "El precio no puede ser negativo", value = 0)
+    /*@Min(message = "El precio no puede ser negativo", value = 0)
     private Double precio;
+
+     */
     @NotBlank(message = "Debes introducir una fecha")
     private LocalDateTime fecha;
     @NotBlank(message = "Debes introducir un usuario")

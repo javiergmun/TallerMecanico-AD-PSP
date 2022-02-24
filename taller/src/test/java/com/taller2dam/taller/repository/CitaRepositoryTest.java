@@ -20,7 +20,7 @@ class CitaRepositoryTest {
 
     private final Cita citaTest = Cita.builder().
             id(10).
-            precio(70.0).
+            //precio(70.0).
             build();
 
     @Autowired
@@ -33,8 +33,8 @@ class CitaRepositoryTest {
 
         assertAll(
                 () -> assertNotNull(cita),
-                () -> assertEquals(citaTest.getId(), cita.getId()),
-                () -> assertEquals(citaTest.getPrecio(), cita.getPrecio())
+                () -> assertEquals(citaTest.getId(), cita.getId())
+                //() -> assertEquals(citaTest.getPrecio(), cita.getPrecio())
         );
     }
 
@@ -52,8 +52,8 @@ class CitaRepositoryTest {
         var citaId = citaRepository.findById(cit.getId()).get();
 
         assertAll(
-                () -> assertNotNull(citaId),
-                () -> assertEquals(cit.getPrecio(), citaId.getPrecio())
+                () -> assertNotNull(citaId)
+                //() -> assertEquals(cit.getPrecio(), citaId.getPrecio())
         );
     }
     @Test
@@ -61,12 +61,12 @@ class CitaRepositoryTest {
     public void updateCita() {
         var cit = citaRepository.save(citaTest);
         cit = citaRepository.findById(cit.getId()).get();
-        cit.setPrecio(80.0);
+        //cit.setPrecio(80.0);
 
         var cita = citaRepository.save(cit);
         assertAll(
-                () -> assertNotNull(cita),
-                () -> assertEquals(80.0, cita.getPrecio())
+                () -> assertNotNull(cita)
+                //() -> assertEquals(80.0, cita.getPrecio())
         );
     }
     @Test

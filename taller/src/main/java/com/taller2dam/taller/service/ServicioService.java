@@ -2,9 +2,14 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Servicio;
 import com.taller2dam.taller.repository.ServicioRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class ServicioService {
     ServicioRepository servicioRepository;
 
@@ -25,8 +30,8 @@ public class ServicioService {
             s.setPrecio(servicioNuevo.getPrecio());
             s.setTipo(servicioNuevo.getTipo());
             s.setTiempo(servicioNuevo.getTiempo());
-            s.setFecha_inicio(servicioNuevo.getFecha_inicio());
-            s.setFecha_fin(servicioNuevo.getFecha_fin());
+            //s.setFecha_inicio(servicioNuevo.getFecha_inicio());
+            //s.setFecha_fin(servicioNuevo.getFecha_fin());
             servicioRepository.save(s);
 
         });

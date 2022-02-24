@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Cita {
 
     private long id;
-    private Double precio;
+    //private Double precio;
     private LocalDateTime fecha;
     private Usuario usuario;
     private Mecanico mecanico;
@@ -26,11 +26,13 @@ public class Cita {
     @Id
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
-
+/*
     @Basic
     @Column(name = "precio")
     public Double getPrecio() {return precio;}
     public void setPrecio(Double precio) {this.precio = precio;}
+
+ */
 
     @Basic
     @CreationTimestamp
@@ -57,7 +59,7 @@ public class Cita {
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
-                ", precio=" + precio +
+                //", precio=" + precio +
                 ", fecha=" + fecha +
                 ", usuario=" + usuario +
                 ", mecanico=" + mecanico +

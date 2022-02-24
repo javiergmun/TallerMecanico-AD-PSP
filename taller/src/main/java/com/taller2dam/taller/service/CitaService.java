@@ -3,10 +3,14 @@ package com.taller2dam.taller.service;
 import com.taller2dam.taller.dao.Cita;
 import com.taller2dam.taller.repository.CitaRepository;
 import com.taller2dam.taller.repository.CitaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class CitaService {
     CitaRepository citaRepository;
 
@@ -31,7 +35,7 @@ public class CitaService {
         cita1.ifPresent(c -> {
 
             c.setId(citaNueva.getId());
-            c.setPrecio(citaNueva.getPrecio());
+            //c.setPrecio(citaNueva.getPrecio());
             c.setFecha(citaNueva.getFecha());
             c.setUsuario(citaNueva.getUsuario());
             c.setMecanico(citaNueva.getMecanico());

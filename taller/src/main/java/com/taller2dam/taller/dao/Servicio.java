@@ -22,8 +22,8 @@ public class Servicio {
     private Double precio;
     private String tipo;
     private Double tiempo;
-    private LocalDateTime fecha_inicio;
-    private LocalDateTime fecha_fin;
+    //private LocalDateTime fecha_inicio;
+    //private LocalDateTime fecha_fin;
 
     @Id
     public long getId() {
@@ -59,7 +59,7 @@ public class Servicio {
     public void setTiempo(Double tiempo) {
         this.tiempo = tiempo;
     }
-
+/*
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_inicio")
@@ -80,6 +80,8 @@ public class Servicio {
         this.fecha_fin = fecha_fin;
     }
 
+ */
+
 
     @Override
     public String toString() {
@@ -88,8 +90,8 @@ public class Servicio {
                 ", precio=" + precio +
                 ", tipo='" + tipo + '\'' +
                 ", tiempo=" + tiempo +
-                ", fecha_inicio=" + fecha_inicio +
-                ", fecha_fin=" + fecha_fin +
+                //", fecha_inicio=" + fecha_inicio +
+                //", fecha_fin=" + fecha_fin +
                 '}';
     }
 }
