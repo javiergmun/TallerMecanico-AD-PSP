@@ -45,7 +45,6 @@ public class UsuarioService {
 
         });
         return usuario1;
-
     }
 
     public void deleteUsuario(Usuario usuario) {
@@ -53,4 +52,3 @@ public class UsuarioService {
     }
 
 }
-

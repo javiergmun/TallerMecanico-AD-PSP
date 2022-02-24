@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 public class ServicioMapper {
     private final ModelMapper modelMapper;
 
-    //DTOS BASICOS COMPLETOS
     public ServicioDTO toDTO(Servicio servicio) {
         return modelMapper.map(servicio, ServicioDTO.class);
     }

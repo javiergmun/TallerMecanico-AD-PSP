@@ -22,7 +22,7 @@ public class UsuarioDTO {
     @NotBlank(message = "Debes indicar si es un administrador")
     private Boolean administrador;
     @NotBlank(message = "Debes introducir un telefono")
-    private Integer telefono; //valorar cambiar a String. No necesitamos un Integer si no vamos a hacer cálculos con él
+    private String telefono;
     @NotBlank(message = "Debes introducir una dirección")
     private Direccion direccion;
     //Esta lista si puede estar vacía. Un usuario puede no tener aun ningun vahículo.

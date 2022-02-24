@@ -20,7 +20,7 @@ public class Usuario {
     private String dni;
     private String nombre;
     private Boolean administrador;
-    private Integer telefono;
+    private String telefono;
     private Direccion direccion;
     private String correo;
     private String password;    //Cifrarla o hacer que no se muestre
@@ -48,8 +48,8 @@ public class Usuario {
 
     @Basic
     @Column(name = "telefono")
-    public int getTelefono() {return telefono;}
-    public void setTelefono(int phone) {this.telefono = phone;}
+    public String getTelefono() {return telefono;}
+    public void setTelefono(String phone) {this.telefono = phone;}
 
     @OneToOne
     @JoinColumn(name = "direccion", referencedColumnName = "id")
