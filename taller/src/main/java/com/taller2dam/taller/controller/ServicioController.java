@@ -113,8 +113,8 @@ public class ServicioController {
                 servicioActualizado.setPrecio(servicio.getPrecio());
                 servicioActualizado.setTipo(servicio.getTipo());
                 servicioActualizado.setTiempo(servicio.getTiempo());
-                servicioActualizado.setFecha_inicio(servicio.getFecha_inicio());
-                servicioActualizado.setFecha_fin(servicio.getFecha_fin());
+                //servicioActualizado.setFecha_inicio(servicio.getFecha_inicio());
+                //servicioActualizado.setFecha_fin(servicio.getFecha_fin());
                 servicioActualizado = servicioRepository.save(servicioActualizado);
                 return ResponseEntity.ok(servicioMapper.toDTO(servicioActualizado));
             }

@@ -23,9 +23,11 @@ public class ServicioDTO {
 
     @NotBlank(message = "Debes fijar un tiempo de trabajo")
     private Double tiempo;
-
+/*
     @NotBlank(message = "Debes incluir una fecha de inicio")
     private LocalDateTime fecha_inicio;
 
     private LocalDateTime fecha_fin;
+
+ */
 }
