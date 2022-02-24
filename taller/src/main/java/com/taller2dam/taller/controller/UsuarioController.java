@@ -1,11 +1,10 @@
 package com.taller2dam.taller.controller;
 
 import com.taller2dam.taller.dao.Usuario;
-import com.taller2dam.taller.dao.Vehiculo;
 import com.taller2dam.taller.dto.UsuarioDTO;
-import com.taller2dam.taller.dto.VehiculoDTO;
 import com.taller2dam.taller.mapper.UsuarioMapper;
 import com.taller2dam.taller.repository.UsuarioRepository;
+import com.taller2dam.taller.service.UsuarioService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -24,49 +23,32 @@ import java.util.Optional;
 
 @RestController
 public class UsuarioController {
-    /*
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioRepository usuarioService;
+    private final UsuarioService usuarioService;
     private final UsuarioMapper usuarioMapper;
 
     @Autowired
-    public UsuarioController(UsuarioRepository usuarioRepository, UsuarioRepository usuarioService, UsuarioMapper usuarioMapper) {
+    public UsuarioController(UsuarioRepository usuarioRepository, UsuarioService usuarioService, UsuarioMapper usuarioMapper) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioService = usuarioService;
         this.usuarioMapper = usuarioMapper;
     }
-    @ApiOperation(value = "test", notes = "Mensaje de bienvenida")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = String.class)
-    })
-    @GetMapping("/test")
-    public String test() {
-        return "Todo OK";
-    }
 
-    @ApiOperation(value = "Obtener todos los usuarios", notes = "Obtiene todos los usuarios")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class, responseContainer = "List"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 400, message = "Bad Request")
-    })
     @GetMapping("/usuarios")
     public ResponseEntity<List<UsuarioDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
-                                                    @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
+                                                     @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
         List<Usuario> usuarios = null;
         try {
             if (nombre.isPresent()) {
-                //vehiculos = vehiculoRepository.findByNombreContainsIgnoreCase(nombre.get());
+                //usuarios = usuarioRepository.findByNombreContainsIgnoreCase(nombre.get());
             } else {
                 usuarios = usuarioRepository.findAll();
             }
-
             if (limit.isPresent() && !usuarios.isEmpty() && usuarios.size() > Integer.parseInt(limit.get())) {
 
                 return ResponseEntity.ok(usuarioMapper.toDTO(
                         usuarios.subList(0, Integer.parseInt(limit.get())))
                 );
-
             } else {
                 if (!usuarios.isEmpty()) {
                     return ResponseEntity.ok(usuarioMapper.toDTO(usuarios));
@@ -79,10 +61,9 @@ public class UsuarioController {
         }
     }
 
-
     @ApiOperation(value = "Obtener un usuario por id", notes = "Obtiene un usuario por id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
     @GetMapping("/usuario/{id}")
@@ -97,10 +78,10 @@ public class UsuarioController {
 
     @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Created", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "Created", response = UsuarioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/")
+    @PostMapping("/usuario")
     public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO) {
         try {
             Usuario usuario = usuarioMapper.fromDTO(usuarioDTO);
@@ -113,165 +94,129 @@ public class UsuarioController {
         }
     }
 
-
-    @ApiOperation(value = "Actualizar un usuario", notes = "Actualiza un vehiculo por id")
+    @ApiOperation(value = "Actualizar un usuario", notes = "Actualiza un usuario por id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/{id}")
-    public ResponseEntity<VehiculoDTO> update(@PathVariable Long id, @RequestBody Vehiculo vehiculo) {
+    @PutMapping("/usuario/{id}")
+    public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
-            Vehiculo vehiculoActualizado = vehiculoRepository.findById(id).orElse(null);
-            if (vehiculoActualizado == null) {
+            Usuario usuarioActualizado = usuarioRepository.findById(id).orElse(null);
+            if (usuarioActualizado == null) {
                 throw new NullPointerException();
             } else {
-                checkVehiculoData(vehiculo);
+                checkUsuarioData(usuario);
                 // Actualizamos los datos que queramos
-                vehiculoActualizado.setId(vehiculo.getId());
-                vehiculoActualizado.setMarca(vehiculo.getMarca());
-                vehiculoActualizado.setModelo(vehiculo.getModelo());
-                vehiculoActualizado.setMatricula(vehiculo.getMatricula());
-                vehiculoActualizado.setColor(vehiculo.getColor());
-                //vehiculoActualizado.setPropietario(vehiculo.getPropietario());
+                usuarioActualizado.setId(usuario.getId());
+                usuarioActualizado.setDni(usuario.getDni());
+                usuarioActualizado.setNombre(usuario.getNombre());
+                usuarioActualizado.setAdministrador(usuario.getAdministrador());
+                usuarioActualizado.setDireccion(usuario.getDireccion());
+                usuarioActualizado.setVehiculos(usuario.getVehiculos());
+                usuarioActualizado.setTelefono(usuario.getTelefono());
 
-                vehiculoActualizado = vehiculoRepository.save(vehiculoActualizado);
-                return ResponseEntity.ok(vehiculoMapper.toDTO(vehiculoActualizado));
+                usuarioActualizado = usuarioRepository.save(usuarioActualizado);
+                return ResponseEntity.ok(usuarioMapper.toDTO(usuarioActualizado));
             }
         } catch (Exception e) {
             throw new NullPointerException(); //Excepcion personalizada
         }
     }
 
-    @ApiOperation(value = "Eliminar un vehiculo", notes = "Elimina un vehiculo dado su id")
+    @ApiOperation(value = "Eliminar un usuario", notes = "Elimina un usuario dado su id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<VehiculoDTO> delete(@PathVariable Long id) {
+    @DeleteMapping("/usuario/{id}")
+    public ResponseEntity<UsuarioDTO> delete(@PathVariable Long id) {
         try {
-            Vehiculo vehiculo = vehiculoRepository.findById(id).orElse(null);
-            if (vehiculo == null) {
+            Usuario usuario = usuarioRepository.findById(id).orElse(null);
+            if (usuario == null) {
                 throw new NullPointerException();
             } else {
-                vehiculoRepository.delete(vehiculo);
-                return ResponseEntity.ok(vehiculoMapper.toDTO(vehiculo));
+                usuarioRepository.delete(usuario);
+                return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
             }
         } catch (Exception e) {
-            throw new RuntimeException("Eliminar, Error al borrar el vehiculo");
+            throw new RuntimeException("Eliminar, Error al borrar el usuario");
         }
     }
-
     /**
-     * Método para comprobar que los datos del vehiculo son correctos
-     *
-     * @param vehiculo Vehiculo a comprobar
-     *                 - marca no puede estar vacía
-     *                 - modelo no puede estar vacío
-     *                 - matricula no puede estar vacío
-     *                 - color no puede estar vacío
-     *                 - propiertario no puede estar vacío
+     * Método para comprobar que los datos del usuario son correctos
+     * @param usuario Usuario a comprobar
+     *                 - nombre no puede estar vacía
+     *                 - salario no puede estar vacío
      */
-    /*
-    private void checkUsuarioData(Vehiculo vehiculo) {
-        if (vehiculo.getMarca() == null || vehiculo.getMarca().isEmpty()) {
-            throw new RuntimeException("La marca es obligatoria");
+    private void checkUsuarioData(Usuario usuario) {
+        if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
+            throw new RuntimeException("El nombre es obligatorio");
         }
-        if (vehiculo.getModelo() == null || vehiculo.getModelo().isEmpty()) {
-            throw new RuntimeException("El modelo es obligatorio");
+        if (usuario.getDni() == null) {
+            throw new RuntimeException("El DNI es obligatorio");
         }
-        if (vehiculo.getMatricula() == null || vehiculo.getMatricula().isEmpty()) {
-            throw new RuntimeException("La matricula es obligatorio");
-        }
-        if (vehiculo.getColor() == null || vehiculo.getColor().isEmpty()) {
-            throw new RuntimeException("El color es obligatorio");
-        }
-        //if (vehiculo.getPropietario() == null || vehiculo.getPropietario().getNombre().isEmpty()) {
-        //  throw new RuntimeException("El propiertario es obligatorio");
-        //}
-
     }
-
-    @ApiOperation(value = "Crea un vehiculo con imagen", notes = "Crea un vehiculo con imagen")
+    @ApiOperation(value = "Crea un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request"),
     })
-    @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> nuevoVehiculo(
-            @RequestPart("vehiculo") VehiculoDTO vehiculoDTO,
-            @RequestPart("file") MultipartFile file) {
-
+    @PostMapping(value = "/usuario/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> nuevoUsuario(
+            @RequestPart("usuario") UsuarioDTO usuarioDTO) {
         try {
             // Comprobamos los campos obligatorios
-            Vehiculo vehiculo = vehiculoMapper.fromDTO(vehiculoDTO);
-            checkVehiculoData(vehiculo);
-
-            if (!file.isEmpty()) {
-                String imagen = file.toString();
-                vehiculo.setImagen(imagen);
-            }
-            Vehiculo vehiculoInsertado = vehiculoRepository.save(vehiculo);
-            return ResponseEntity.ok(vehiculoMapper.toDTO(vehiculoInsertado));
+            Usuario usuario = usuarioMapper.fromDTO(usuarioDTO);
+            checkUsuarioData(usuario);
+            //TODO IMAGEN?
+            Usuario usuarioInsertado = usuarioRepository.save(usuario);
+            return ResponseEntity.ok(usuarioMapper.toDTO(usuarioInsertado));
         } catch (Exception ex) {
-            throw new RuntimeException("Insertar, Error al insertar el vehiculo. Campos incorrectos");
+            throw new RuntimeException("Insertar, Error al insertar el usuario. Campos incorrectos");
         }
-
     }
-
-    //@Operation(summary = "Obtiene la lista de vehiculos existentes", description = "Obtiene la lista de vehiculos existentes")
-    @ApiOperation(value = "Obtiene una lista de vehiculos", notes = "Obtiene una lista de vehiculos paginada, filtrada y ordenada")
+    @ApiOperation(value = "Obtiene una lista de usuarios", notes = "Obtiene una lista de usuarios paginada, filtrada y ordenada")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK: Lista de vehiculos", response = VehiculoDTO.class),
+            @ApiResponse(code = 200, message = "OK: Lista de usuarios", response = UsuarioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request: Lista no encontrada")
     })
-    @GetMapping("/all")
+    @GetMapping("/all/usuario")
     public ResponseEntity<?> listado(
             // Podemos buscar por los campos que quieramos... nombre, precio... así construir consultas
-            @RequestParam(required = false, name = "marca") Optional<String> marca,
-            @RequestParam(required = false, name = "modelo") Optional<String> modelo,
-            @RequestParam(required = false, name = "matricula") Optional<String> matricula,
-            @RequestParam(required = false, name = "color") Optional<String> color,
-            @RequestParam(required = false, name = "propietario") Optional<Usuario> propietario,
-            @RequestParam(required = false, name = "imagen") Optional<String> imagen,
+            @RequestParam(required = false, name = "nombre") Optional<String> nombre,
+            @RequestParam(required = false, name = "dni") Optional<String> dni,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sort
-    ) {
+    ){
         // Consulto en base a las páginas
         Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, sort);
-        Page<Vehiculo> pagedResult;
+        Page<Usuario> pagedResult;
         try {
-            if (matricula.isPresent() && propietario.isPresent()) {
-                pagedResult = vehiculoRepository.findAll(paging);
+            if (nombre.isPresent() && dni.isPresent()) {
+                pagedResult = usuarioRepository.findAll(paging);
             } else {
-                throw new RuntimeException("Hay algún campo incompleto: matricula o propietario");
+                throw new RuntimeException("Hay algún campo incompleto: matricula o salario");
             }
-            // De la página saco la lista de vehiculos
-            //List<Vehiculo> vehiculos = pagedResult.getContent();
+            // De la página saco la lista de usuarios
+            //List<Usuario> usuarios = pagedResult.getContent();
             // Mapeo al DTO. Si quieres ver toda la info de las paginas pon pageResult.
 
 
-            /*ListVehiculoPageDTO listVehiculoPageDTO = ListVehiculoPageDTO.builder()
-                    .data(vehiculoMapper.toDTO(pagedResult.getContent()))
+            /*ListUsuarioPageDTO listUsuarioPageDTO = ListUsuarioPageDTO.builder()
+                    .data(usuarioMapper.toDTO(pagedResult.getContent()))
                     .totalPages(pagedResult.getTotalPages())
                     .totalElements(pagedResult.getTotalElements())
                     .currentPage(pagedResult.getNumber())
                     .sort(pagedResult.getSort().toString())
                     .build();
-            return ResponseEntity.ok(listVehiculoPageDTO);*/
-    /*
+            return ResponseEntity.ok(listUsuarioPageDTO);*/
             return null; //<-------------Cambiar esto por el bloque comentado
         } catch (Exception e) {
             throw new RuntimeException("Selección de Datos Parámetros de consulta incorrectos");
         }
     }
-
-     */
-
-
-
 }
