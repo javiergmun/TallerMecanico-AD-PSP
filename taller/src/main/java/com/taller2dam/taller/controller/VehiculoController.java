@@ -1,6 +1,5 @@
 package com.taller2dam.taller.controller;
 
-import com.taller2dam.taller.config.ApiConfig;
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dao.Vehiculo;
 import com.taller2dam.taller.dto.VehiculoDTO;
@@ -10,7 +9,6 @@ import com.taller2dam.taller.service.VehiculoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

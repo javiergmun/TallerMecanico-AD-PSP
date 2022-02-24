@@ -5,7 +5,6 @@ import com.taller2dam.taller.dao.Servicio;
 import com.taller2dam.taller.dao.Usuario;
 import lombok.*;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 

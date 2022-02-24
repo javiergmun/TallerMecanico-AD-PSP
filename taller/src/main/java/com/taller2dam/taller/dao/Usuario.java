@@ -1,14 +1,21 @@
 package com.taller2dam.taller.dao;
 
+import com.taller2dam.taller.dao.Direccion;
+import com.taller2dam.taller.dao.Login;
+import com.taller2dam.taller.dao.Vehiculo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import javax.persistence.*;
 import java.util.Set;
-import java.util.UUID;
+
+
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) //Con esto podríamos obtener la fecha  y hora de creación del usuario al usar el @CreateDate sobre un LocalDateTime
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -75,6 +82,9 @@ public class Usuario {
     @JoinColumn(name = "login", referencedColumnName = "id")
     public Login getLogin() {return login;}
     public void setLogin(Login login) {this.login = login;}
+
+
+
 
     @Override
     public String toString() {
