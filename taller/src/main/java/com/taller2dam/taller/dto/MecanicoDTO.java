@@ -11,14 +11,15 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MecanicoDTO {
-    private Long id;
 
+    private long id;
     @NotBlank(message = "Necesitas tener un nombre")
     private String nombre;
 
     @Min(message = "El salario no puede ser negativo", value = 0)
     private Double salario;
 
+    @NotBlank(message = "Necesitas tener un servicio")
     private Servicio servicio;
 
 }

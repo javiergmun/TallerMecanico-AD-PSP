@@ -18,7 +18,6 @@ public class VehiculoMapper {
         return modelMapper.map(vehiculo, VehiculoDTO.class);
 
     }
-
     public Vehiculo fromDTO(VehiculoDTO vehiculoDTO) {
         return modelMapper.map(vehiculoDTO, Vehiculo.class);
     }
