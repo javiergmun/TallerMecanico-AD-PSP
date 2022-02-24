@@ -2,9 +2,14 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Servicio;
 import com.taller2dam.taller.repository.ServicioRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class ServicioService {
     ServicioRepository servicioRepository;
 
