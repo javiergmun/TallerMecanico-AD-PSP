@@ -151,7 +151,6 @@ public class CitaController {
         if (login.getMarca() == null || vehiculo.getMarca().isEmpty()) {
             throw new RuntimeException("La marca es obligatoria");
         }
-
          */
     }
 }

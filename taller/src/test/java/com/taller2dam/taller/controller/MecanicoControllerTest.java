@@ -1,13 +1,43 @@
 package com.taller2dam.taller.controller;
 
+import com.taller2dam.taller.dao.Mecanico;
+import com.taller2dam.taller.dto.MecanicoDTO;
+import com.taller2dam.taller.mapper.MecanicoMapper;
+import com.taller2dam.taller.repository.MecanicoRepository;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MecanicoControllerTest {
+/*
+    @Mock
+    private static MecanicoRepository mecanicoRepository;
+
+    @InjectMocks
+    private static MecanicoController mecanicoController;
+    private final Mecanico mecanico = Mecanico.builder()
+            .id(1L)
+            .nombre("MecanicoTest1")
+            .salario(2000.0)
+            .build();
+    @Mock
+    private MecanicoMapper mecanicoMapper;
+
 
     @Test
+    @Order(1)
     void findAll() {
+        var dto = MecanicoDTO.builder()
+                .nombre(mecanico.getNombre());
+
     }
 
     @Test
@@ -33,4 +63,6 @@ class MecanicoControllerTest {
     @Test
     void listado() {
     }
+
+ */
 }

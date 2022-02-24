@@ -1,6 +1,7 @@
 package com.taller2dam.taller.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "mecanico")
 @NamedQuery(name = "mecanico.findAll", query = "SELECT m FROM Mecanico m")
 public class Mecanico {
