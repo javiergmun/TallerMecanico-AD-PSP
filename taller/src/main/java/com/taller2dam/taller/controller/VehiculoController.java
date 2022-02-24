@@ -105,7 +105,7 @@ public class VehiculoController {
             @ApiResponse(code = 200, message = "Created", response = VehiculoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/")
+    @PostMapping("/vehiculo")
     public ResponseEntity<VehiculoDTO> save(@RequestBody VehiculoDTO vehiculoDTO) {
         try {
             Vehiculo vehiculo = vehiculoMapper.fromDTO(vehiculoDTO);
@@ -125,7 +125,7 @@ public class VehiculoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/{id}")
+    @PutMapping("/vehiculo/{id}")
     public ResponseEntity<VehiculoDTO> update(@PathVariable Long id, @RequestBody Vehiculo vehiculo) {
         try {
             Vehiculo vehiculoActualizado = vehiculoRepository.findById(id).orElse(null);
@@ -155,7 +155,7 @@ public class VehiculoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/vehiculo/{id}")
     public ResponseEntity<VehiculoDTO> delete(@PathVariable Long id) {
         try {
             Vehiculo vehiculo = vehiculoRepository.findById(id).orElse(null);
@@ -204,7 +204,7 @@ public class VehiculoController {
             @ApiResponse(code = 200, message = "OK", response = VehiculoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request"),
     })
-    @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/vehiculo/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> nuevoVehiculo(
             @RequestPart("vehiculo") VehiculoDTO vehiculoDTO,
             @RequestPart("file") MultipartFile file) {
@@ -232,7 +232,7 @@ public class VehiculoController {
             @ApiResponse(code = 200, message = "OK: Lista de vehiculos", response = VehiculoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request: Lista no encontrada")
     })
-    @GetMapping("/all")
+    @GetMapping("/all/vehiculo")
     public ResponseEntity<?> listado(
             // Podemos buscar por los campos que quieramos... nombre, precio... así construir consultas
             @RequestParam(required = false, name = "marca") Optional<String> marca,

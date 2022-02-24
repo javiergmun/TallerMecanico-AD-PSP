@@ -27,17 +27,17 @@ INSERT INTO VEHICULO(id, color, marca, matricula, modelo, imagen)
 VALUES(10,'blanco','Test','78699b','Prueba', 'Esto es una Imagen');
 
 
-INSERT INTO SERVICIO(id, fecha_fin, fecha_inicio, precio, tiempo, tipo)
-VALUES(1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100.0, 50.0, 'chapa y pintura');
-INSERT INTO SERVICIO(id, fecha_fin, fecha_inicio, precio, tiempo, tipo)
-VALUES(2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 60.0, 30.0, 'cambio neumáticos');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo)
+VALUES(1, 100.0, 50.0, 'chapa y pintura');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo)
+VALUES(2, 60.0, 30.0, 'cambio neumáticos');
 
 INSERT INTO MECANICO(id, nombre, salario)
 VALUES(1, 'Paco', 1200.0);
 INSERT INTO MECANICO(id, nombre, salario)
 VALUES(2, 'Juan', 1200.0);
 
-INSERT INTO CITA(id, fecha, precio, mecanico, servicio_contratado, cliente)
-VALUES(1, CURRENT_TIMESTAMP, 70.0, 1, 1, 2);
-INSERT INTO CITA(id, fecha, precio, mecanico, servicio_contratado, cliente)
-VALUES(2, CURRENT_TIMESTAMP, 60.0, 2, 2, 3);
+INSERT INTO CITA(id, fecha, mecanico, servicio_contratado, cliente)
+VALUES(1, CURRENT_TIMESTAMP, 1, 1, 2);
+INSERT INTO CITA(id, fecha, mecanico, servicio_contratado, cliente)
+VALUES(2, CURRENT_TIMESTAMP, 2, 2, 3);

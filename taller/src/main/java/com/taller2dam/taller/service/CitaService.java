@@ -35,7 +35,7 @@ public class CitaService {
         cita1.ifPresent(c -> {
 
             c.setId(citaNueva.getId());
-            c.setPrecio(citaNueva.getPrecio());
+            //c.setPrecio(citaNueva.getPrecio());
             c.setFecha(citaNueva.getFecha());
             c.setUsuario(citaNueva.getUsuario());
             c.setMecanico(citaNueva.getMecanico());
