@@ -3,10 +3,14 @@ package com.taller2dam.taller.service;
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.repository.UsuarioRepository;
 import com.taller2dam.taller.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class UsuarioService {
     UsuarioRepository usuarioRepository;
 

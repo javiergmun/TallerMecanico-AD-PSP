@@ -3,10 +3,14 @@ package com.taller2dam.taller.service;
 import com.taller2dam.taller.dao.Cita;
 import com.taller2dam.taller.repository.CitaRepository;
 import com.taller2dam.taller.repository.CitaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class CitaService {
     CitaRepository citaRepository;
 
