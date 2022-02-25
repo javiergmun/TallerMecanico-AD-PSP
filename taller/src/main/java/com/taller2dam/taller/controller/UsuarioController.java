@@ -1,6 +1,7 @@
 package com.taller2dam.taller.controller;
 
 import com.taller2dam.taller.dao.Usuario;
+import com.taller2dam.taller.dto.CreateUserDTO;
 import com.taller2dam.taller.dto.UsuarioDTO;
 import com.taller2dam.taller.mapper.UsuarioMapper;
 import com.taller2dam.taller.repository.UsuarioRepository;
@@ -8,11 +9,12 @@ import com.taller2dam.taller.service.UsuarioService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,21 +23,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioRepository usuarioRepository;
     private final UsuarioService usuarioService;
     private final UsuarioMapper usuarioMapper;
 
-    @Autowired
-    public UsuarioController(UsuarioRepository usuarioRepository, UsuarioService usuarioService, UsuarioMapper usuarioMapper) {
-        this.usuarioRepository = usuarioRepository;
-        this.usuarioService = usuarioService;
-        this.usuarioMapper = usuarioMapper;
-    }
 
     @GetMapping("/usuarios")
     public ResponseEntity<List<UsuarioDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
-                                                     @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
+                                                    @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
         List<Usuario> usuarios = null;
         try {
             if (nombre.isPresent()) {
@@ -75,6 +72,7 @@ public class UsuarioController {
         }
     }
 
+
     @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = UsuarioDTO.class),
@@ -93,6 +91,14 @@ public class UsuarioController {
         }
     }
 
+    //Crear usuario seguro
+
+    @PostMapping("/usuario")
+    public ResponseEntity<UsuarioDTO> saveSeguro(@RequestBody CreateUserDTO nuevoUsuario) throws Exception {
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioMapper.toDTO(usuarioService.saveUsuarioSeguro(nuevoUsuario)));
+    }
+
+
     @ApiOperation(value = "Actualizar un usuario", notes = "Actualiza un usuario por id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
@@ -110,8 +116,8 @@ public class UsuarioController {
                 // Actualizamos los datos que queramos
                 usuarioActualizado.setId(usuario.getId());
                 usuarioActualizado.setDni(usuario.getDni());
-                usuarioActualizado.setNombre(usuario.getNombre());
-                usuarioActualizado.setAdministrador(usuario.getAdministrador());
+                usuarioActualizado.setUsername(usuario.getUsername());
+                //usuarioActualizado.setAdministrador(usuario.getAdministrador());
                 usuarioActualizado.setDireccion(usuario.getDireccion());
                 usuarioActualizado.setVehiculos(usuario.getVehiculos());
                 usuarioActualizado.setTelefono(usuario.getTelefono());
@@ -144,20 +150,23 @@ public class UsuarioController {
             throw new RuntimeException("Eliminar, Error al borrar el usuario");
         }
     }
+
     /**
      * Método para comprobar que los datos del usuario son correctos
+     *
      * @param usuario Usuario a comprobar
-     *                 - nombre no puede estar vacía
-     *                 - salario no puede estar vacío
+     *                - nombre no puede estar vacía
+     *                - salario no puede estar vacío
      */
     private void checkUsuarioData(Usuario usuario) {
-        if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
+        if (usuario.getUsername() == null || usuario.getUsername().isEmpty()) {
             throw new RuntimeException("El nombre es obligatorio");
         }
         if (usuario.getDni() == null) {
             throw new RuntimeException("El DNI es obligatorio");
         }
     }
+
     @ApiOperation(value = "Crea un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
@@ -177,6 +186,7 @@ public class UsuarioController {
             throw new RuntimeException("Insertar, Error al insertar el usuario. Campos incorrectos");
         }
     }
+
     @ApiOperation(value = "Obtiene una lista de usuarios", notes = "Obtiene una lista de usuarios paginada, filtrada y ordenada")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK: Lista de usuarios", response = UsuarioDTO.class),
@@ -184,13 +194,13 @@ public class UsuarioController {
     })
     @GetMapping("/all/usuario")
     public ResponseEntity<?> listado(
-            // Podemos buscar por los campos que quieramos... nombre, precio... así construir consultas
+            // Podemos buscar por los campos que queramos... nombre, precio... así construir consultas
             @RequestParam(required = false, name = "nombre") Optional<String> nombre,
             @RequestParam(required = false, name = "dni") Optional<String> dni,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sort
-    ){
+    ) {
         // Consulto en base a las páginas
         Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, sort);
         Page<Usuario> pagedResult;
