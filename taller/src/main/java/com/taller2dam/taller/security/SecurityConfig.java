@@ -1,6 +1,7 @@
 package com.taller2dam.taller.security;
 
 import com.taller2dam.taller.dao.users.CustomUserDetailsService;
+import com.taller2dam.taller.security.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,11 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                    //indicar aquí todos los entry points y sus permisos. Ejemplo
+                    //TODO:indicar aquí todos los entry points y sus permisos. Ejemplo
                     //. antMatchers(HttpMethod.GET , "/usuarios/**, "/vehiculos/++").hasRole("USER) o hasAnyRole ("USER,"ADMIN") si vale para ambos
                     .anyRequest().authenticated();
         //Añadimos el filtro
-        http.addFilterBefore(null, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 }
