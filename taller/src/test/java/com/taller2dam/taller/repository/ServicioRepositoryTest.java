@@ -1,7 +1,6 @@
 package com.taller2dam.taller.repository;
 
 import com.taller2dam.taller.dao.Servicio;
-import com.taller2dam.taller.dao.Usuario;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

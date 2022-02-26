@@ -2,7 +2,6 @@ package com.taller2dam.taller.service;
 
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.repository.UsuarioRepository;
-import com.taller2dam.taller.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +24,17 @@ public class UsuarioService {
         return usuarioRepository.findById(usuarioId);
     }
 
+    //public Optional<Usuario> findByUsername (String username){
+    //   return usuarioRepository.findByUsername(username);
+    // }
+
     public Usuario saveUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
     //A falta de probar su funcionamiento
     public Optional<Usuario> updateUsuario(Usuario usuario, Usuario usuarioNuevo) {
-        Optional<Usuario>usuario1= findUsuarioById(usuario.getId());
+        Optional<Usuario> usuario1 = findUsuarioById(usuario.getId());
         usuario1.ifPresent(u -> {
 
             u.setDni(usuarioNuevo.getDni());
