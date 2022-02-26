@@ -3,6 +3,8 @@ package com.taller2dam.taller.controller;
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dto.CreateUserDTO;
 import com.taller2dam.taller.dto.UsuarioDTO;
+import com.taller2dam.taller.errores.ApiError;
+import com.taller2dam.taller.errores.UsuarioNotFoundException;
 import com.taller2dam.taller.mapper.UsuarioMapper;
 import com.taller2dam.taller.repository.UsuarioRepository;
 import com.taller2dam.taller.service.UsuarioService;
@@ -19,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,13 +66,16 @@ public class UsuarioController {
             @ApiResponse(code = 404, message = "Not Found")
     })
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id) {
-        Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario == null) {
-            throw new NullPointerException(); //Excepcion personalizada
-        } else {
-            return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
-        }
+    public UsuarioDTO findById(@PathVariable Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        return usuarioMapper.toDTO(usuario);
+
+        //  Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        //if (usuario == null) {
+        //   throw new NullPointerException(); //Excepcion personalizada
+        //} else {
+        //   return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
+        //}
     }
 
 
@@ -106,28 +112,23 @@ public class UsuarioController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PutMapping("/usuario/{id}")
-    public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @RequestBody Usuario usuario) {
-        try {
-            Usuario usuarioActualizado = usuarioRepository.findById(id).orElse(null);
-            if (usuarioActualizado == null) {
-                throw new NullPointerException();
-            } else {
-                checkUsuarioData(usuario);
-                // Actualizamos los datos que queramos
-                usuarioActualizado.setId(usuario.getId());
-                usuarioActualizado.setDni(usuario.getDni());
-                usuarioActualizado.setUsername(usuario.getUsername());
-                //usuarioActualizado.setAdministrador(usuario.getAdministrador());
-                usuarioActualizado.setDireccion(usuario.getDireccion());
-                usuarioActualizado.setVehiculos(usuario.getVehiculos());
-                usuarioActualizado.setTelefono(usuario.getTelefono());
+    public UsuarioDTO update(@PathVariable Long id, @RequestBody Usuario usuario) {
 
-                usuarioActualizado = usuarioRepository.save(usuarioActualizado);
-                return ResponseEntity.ok(usuarioMapper.toDTO(usuarioActualizado));
-            }
-        } catch (Exception e) {
-            throw new NullPointerException(); //Excepcion personalizada
-        }
+        Usuario usuarioActualizado = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        checkUsuarioData(usuario);
+        // Actualizamos los datos que queramos
+        usuarioActualizado.setId(usuario.getId());
+        usuarioActualizado.setDni(usuario.getDni());
+        usuarioActualizado.setUsername(usuario.getUsername());
+        //usuarioActualizado.setAdministrador(usuario.getAdministrador());
+        usuarioActualizado.setDireccion(usuario.getDireccion());
+        usuarioActualizado.setVehiculos(usuario.getVehiculos());
+        usuarioActualizado.setTelefono(usuario.getTelefono());
+
+        usuarioActualizado = usuarioRepository.save(usuarioActualizado);
+
+        return usuarioMapper.toDTO(usuarioActualizado);
+
     }
 
     @ApiOperation(value = "Eliminar un usuario", notes = "Elimina un usuario dado su id")
@@ -138,18 +139,12 @@ public class UsuarioController {
     })
     @DeleteMapping("/usuario/{id}")
     public ResponseEntity<UsuarioDTO> delete(@PathVariable Long id) {
-        try {
-            Usuario usuario = usuarioRepository.findById(id).orElse(null);
-            if (usuario == null) {
-                throw new NullPointerException();
-            } else {
-                usuarioRepository.delete(usuario);
-                return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Eliminar, Error al borrar el usuario");
-        }
+
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
     }
+
 
     /**
      * Método para comprobar que los datos del usuario son correctos
@@ -228,4 +223,5 @@ public class UsuarioController {
             throw new RuntimeException("Selección de Datos Parámetros de consulta incorrectos");
         }
     }
+
 }
