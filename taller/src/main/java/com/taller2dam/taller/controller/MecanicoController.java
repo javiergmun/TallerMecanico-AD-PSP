@@ -2,6 +2,7 @@ package com.taller2dam.taller.controller;
 
 import com.taller2dam.taller.dao.Mecanico;
 import com.taller2dam.taller.dto.MecanicoDTO;
+import com.taller2dam.taller.dto.page.ListMecanicoPageDTO;
 import com.taller2dam.taller.mapper.MecanicoMapper;
 import com.taller2dam.taller.repository.MecanicoRepository;
 import com.taller2dam.taller.service.MecanicoService;
@@ -176,17 +177,18 @@ public class MecanicoController {
             throw new RuntimeException("Insertar, Error al insertar el mecanico. Campos incorrectos");
         }
     }
-
+/*
     @ApiOperation(value = "Obtiene una lista de mecanicos", notes = "Obtiene una lista de mecanicos paginada, filtrada y ordenada")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK: Lista de mecanicos", response = MecanicoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request: Lista no encontrada")
     })
-    @GetMapping("/all/mecanico")
+
+    @GetMapping("/mecanicopage")
     public ResponseEntity<?> listado(
             // Podemos buscar por los campos que quieramos... nombre, precio... así construir consultas
             @RequestParam(required = false, name = "nombre") Optional<String> nombre,
-            @RequestParam(required = false, name = "salario") Optional<String> salario,
+            @RequestParam(required = false, name = "salario") Optional<Double> salario,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sort
@@ -196,26 +198,29 @@ public class MecanicoController {
         Page<Mecanico> pagedResult;
         try {
             if (nombre.isPresent() && salario.isPresent()) {
-                pagedResult = mecanicoRepository.findAll(paging);
+                pagedResult = mecanicoRepository.findByNombreAndPrecioPageable(nombre.get(), salario.get(), paging);
             } else {
-                throw new RuntimeException("Hay algún campo incompleto: matricula o salario");
+                pagedResult = mecanicoRepository.findAll(paging);
+                //throw new RuntimeException("Hay algún campo incompleto: matricula o salario");
             }
             // De la página saco la lista de mecanicos
             //List<Mecanico> mecanicos = pagedResult.getContent();
             // Mapeo al DTO. Si quieres ver toda la info de las paginas pon pageResult.
 
 
-            /*ListMecanicoPageDTO listMecanicoPageDTO = ListMecanicoPageDTO.builder()
+            ListMecanicoPageDTO listMecanicoPageDTO = ListMecanicoPageDTO.builder()
                     .data(mecanicoMapper.toDTO(pagedResult.getContent()))
                     .totalPages(pagedResult.getTotalPages())
                     .totalElements(pagedResult.getTotalElements())
                     .currentPage(pagedResult.getNumber())
                     .sort(pagedResult.getSort().toString())
                     .build();
-            return ResponseEntity.ok(listMecanicoPageDTO);*/
-            return null; //<-------------Cambiar esto por el bloque comentado
+            return ResponseEntity.ok(listMecanicoPageDTO);
+            //return null; //<-------------Cambiar esto por el bloque comentado
         } catch (Exception e) {
             throw new RuntimeException("Selección de Datos Parámetros de consulta incorrectos");
         }
     }
+
+ */
 }
