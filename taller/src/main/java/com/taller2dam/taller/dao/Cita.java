@@ -57,9 +57,8 @@ public class Cita {
 
     @Override
     public String toString() {
-        return "Ticket{" +
+        return "Cita{" +
                 "id=" + id +
-                //", precio=" + precio +
                 ", fecha=" + fecha +
                 ", usuario=" + usuario +
                 ", mecanico=" + mecanico +

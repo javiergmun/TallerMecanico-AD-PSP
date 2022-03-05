@@ -27,10 +27,10 @@ INSERT INTO VEHICULO(id, color, marca, matricula, modelo, imagen)
 VALUES(10,'blanco','Test','78699b','Prueba', 'Esto es una Imagen');
 
 
-INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen)
-VALUES(1, 100.0, 50.0, 'chapa y pintura', 'imagen1');
-INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen)
-VALUES(2, 60.0, 30.0, 'cambio neumáticos', 'imagen2');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen, descripcion)
+VALUES(1, 100.0, 50.0, 'chapa y pintura', 'imagen1', 'descripcion1');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen, descripcion)
+VALUES(2, 60.0, 30.0, 'cambio neumáticos', 'imagen2', 'descripcion2');
 
 INSERT INTO MECANICO(id, nombre, salario)
 VALUES(1, 'Paco', 1200.0);

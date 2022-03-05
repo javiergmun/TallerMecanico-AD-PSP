@@ -23,6 +23,8 @@ public class Servicio {
     private String tipo;
     private Double tiempo;
     private String imagen;
+    private String bitmap; //Para la imagen de android
+    private String descripcion;
     //private LocalDateTime fecha_inicio;
     //private LocalDateTime fecha_fin;
 
@@ -66,6 +68,16 @@ public class Servicio {
     public String getImagen() {return imagen;}
     public void setImagen(String imagen) {this.imagen = imagen;}
 
+    @Basic
+    @Column(name = "bitmap")
+    public String getBitmap() {return bitmap;}
+    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
+
+    @Basic
+    @Column(name = "descripcion")
+    public String getDescripcion() {return descripcion;}
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+
     /*
     @Basic
     @CreationTimestamp
@@ -97,8 +109,9 @@ public class Servicio {
                 ", precio=" + precio +
                 ", tipo='" + tipo + '\'' +
                 ", tiempo=" + tiempo +
-                //", fecha_inicio=" + fecha_inicio +
-                //", fecha_fin=" + fecha_fin +
+                ", imagen='" + imagen + '\'' +
+                ", bitmap='" + bitmap + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

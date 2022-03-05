@@ -22,6 +22,7 @@ public class Vehiculo {
     private String color;
     //private Usuario propietario;
     private String imagen;
+    private String bitmap; //Para la imagen de android
 
     @Id
     public long getId() {
@@ -83,6 +84,11 @@ public class Vehiculo {
     public String getImagen() {return imagen;}
     public void setImagen(String imagen) {this.imagen = imagen;}
 
+    @Basic
+    @Column(name = "bitmap")
+    public String getBitmap() {return bitmap;}
+    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
+
     @Override
     public String toString() {
         return "Vehiculo{" +
@@ -91,7 +97,8 @@ public class Vehiculo {
                 ", modelo='" + modelo + '\'' +
                 ", matricula='" + matricula + '\'' +
                 ", color='" + color + '\'' +
-                //", propietario=" + propietario +
+                ", imagen='" + imagen + '\'' +
+                ", bitmap='" + bitmap + '\'' +
                 '}';
     }
 }
