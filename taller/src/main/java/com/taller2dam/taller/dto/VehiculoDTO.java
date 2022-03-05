@@ -21,13 +21,10 @@ public class VehiculoDTO {
     private String matricula;
     @NotBlank(message = "Debes introducir un color")
     private String color;
-    @NotBlank(message = "Debes introducir un propietario")
-    private Usuario propietario;
-
-
-
-
-
+    //@NotBlank(message = "Debes introducir un propietario")
+    //private Usuario propietario;
+    private String imagen;
+    private String bitmap; //Para la imagen de android
 
 
 }
