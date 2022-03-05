@@ -1,6 +1,5 @@
 package com.taller2dam.taller.dto;
 
-import com.taller2dam.taller.dao.Direccion;
 import com.taller2dam.taller.dao.Vehiculo;
 import lombok.*;
 
@@ -30,8 +29,12 @@ public class UsuarioDTO {
     @NotBlank(message = "Debes introducir un correo")
     @Email(regexp = ".*@.*\\..*", message = "Email debe ser correcto")
     private String correo;
+    /*
     @NotBlank(message = "Debes introducir una dirección")
     private Direccion direccion;
+
+     */
+    private String direccion;
 
     //Esta lista si puede estar vacía. Un usuario puede no tener aun ningun vahículo.
     //Se hará el registro del vehículo en el layout correspondiente.

@@ -44,7 +44,7 @@ public class UsuarioService {
                     .dni(newUsuario.getDni())
                     .telefono(newUsuario.getTelefono())
                     .correo(newUsuario.getCorreo())
-                    //.direccion(newUsuario.getDireccion())
+                    .direccion(newUsuario.getDireccion())
                     .roles(Stream.of(UserRole.USER).collect(Collectors.toSet()))  //Con Java 9 se puede hacer como Set.of(UserRole.USER)
                     .build();
 
