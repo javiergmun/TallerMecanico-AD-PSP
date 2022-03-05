@@ -31,6 +31,7 @@ public class Usuario {
     private Direccion direccion;
     private String correo;
     private String password;    //Cifrarla o hacer que no se muestre
+    private String imagen;
     private Set<Vehiculo> vehiculos;
     private Login login;
 
@@ -72,6 +73,11 @@ public class Usuario {
     @Column(name = "contraseña")
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
+
+    @Basic
+    @Column(name = "imagen")
+    public String getImagen() {return imagen;}
+    public void setImagen(String imagen) {this.imagen = imagen;}
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
     @OneToMany

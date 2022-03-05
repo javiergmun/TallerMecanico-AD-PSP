@@ -22,6 +22,7 @@ public class Servicio {
     private Double precio;
     private String tipo;
     private Double tiempo;
+    private String imagen;
     //private LocalDateTime fecha_inicio;
     //private LocalDateTime fecha_fin;
 
@@ -59,7 +60,13 @@ public class Servicio {
     public void setTiempo(Double tiempo) {
         this.tiempo = tiempo;
     }
-/*
+
+    @Basic
+    @Column(name = "imagen")
+    public String getImagen() {return imagen;}
+    public void setImagen(String imagen) {this.imagen = imagen;}
+
+    /*
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_inicio")
