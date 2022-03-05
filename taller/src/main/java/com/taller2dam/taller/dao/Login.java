@@ -19,6 +19,7 @@ public class Login {
     //private Usuario usuario;
 
     @Id
+    @GeneratedValue
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 

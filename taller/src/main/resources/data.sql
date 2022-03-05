@@ -1,4 +1,5 @@
 
+/*
 INSERT INTO DIRECCION(id, calle, codigo, localidad, numero)
 VALUES(1, 'avenida','8567','Leganes','7');
 VALUES(2, 'avenida','8567','Leganes','8');
@@ -14,14 +15,14 @@ INSERT INTO LOGIN(id, esta_activo,token)
 VALUES(3,false,'ytf');
 
 
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(1, true, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 1, 1);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(2, false, 'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 1, 2);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(3, false, 'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 1, 3);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion)
-VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 1);
+INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(1, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 1, 1);
+INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(2,  'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 1, 2);
+INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(3,  'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 1, 3);
+INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion)
+VALUES(10, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 1);
 
 
 
@@ -47,4 +48,5 @@ INSERT INTO CITA(id, fecha, mecanico, servicio_contratado, cliente)
 VALUES(1, CURRENT_TIMESTAMP, 1, 1, 20);
 INSERT INTO CITA(id, fecha, mecanico, servicio_contratado, cliente)
 VALUES(2, CURRENT_TIMESTAMP, 2, 2, 30);
+  */
 

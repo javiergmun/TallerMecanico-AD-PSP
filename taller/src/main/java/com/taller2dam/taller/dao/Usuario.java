@@ -23,21 +23,8 @@ import java.util.stream.Collectors;
 @Entity
 public class Usuario implements UserDetails {
 
-    private long id;
-    private String dni;
-    private String nombre;
-    private Boolean administrador;
-    private String telefono;
-    private Direccion direccion;
-    private String correo;
-    private String password;    //Cifrarla o hacer que no se muestre
-    private String imagen;
-    private String bitmap; //Para la imagen de android
-    private Set<Vehiculo> vehiculos;
-    private Login login;
-
-
     @Id
+    @GeneratedValue
     private long id;
 
     @Basic
@@ -47,7 +34,7 @@ public class Usuario implements UserDetails {
     private String username;
     private String password;    //Cifrarla o hacer que no se muestre
 
-    //private Boolean administrador;
+
     @Basic
     @Column(name = "telefono")
     private String telefono;
@@ -62,13 +49,28 @@ public class Usuario implements UserDetails {
 
     @Basic
     @Column(name = "imagen")
-    public String getImagen() {return imagen;}
-    public void setImagen(String imagen) {this.imagen = imagen;}
+    private String imagen;
 
     @Basic
     @Column(name = "bitmap")
-    public String getBitmap() {return bitmap;}
-    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
+    private String bitmap; //Para la imagen de android
+
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(String bitmap) {
+        this.bitmap = bitmap;
+    }
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
     @OneToMany
@@ -90,7 +92,6 @@ public class Usuario implements UserDetails {
         this.id = id;
     }
 
-
     public String getDni() {
         return dni;
     }
@@ -98,12 +99,6 @@ public class Usuario implements UserDetails {
     public void setDni(String dni) {
         this.dni = dni;
     }
-
-    //@Basic
-    //@Column(name = "es_administrador")
-    //public Boolean getAdministrador() {return administrador;}
-    //public void setAdministrador(Boolean administrador) {this.administrador = administrador;}
-
 
     public String getTelefono() {
         return telefono;
@@ -168,6 +163,7 @@ public class Usuario implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(rol -> new SimpleGrantedAuthority("ROLE_" + rol.name())).collect(Collectors.toList());
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -187,7 +183,7 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    
+
     @Override
     public String getUsername() {
         return username;
@@ -201,5 +197,5 @@ public class Usuario implements UserDetails {
     public String getPassword() {
         return password;
     }
- 
+
 }

@@ -25,6 +25,7 @@ public class Vehiculo {
     private String bitmap; //Para la imagen de android
 
     @Id
+    @GeneratedValue
     public long getId() {
         return id;
     }

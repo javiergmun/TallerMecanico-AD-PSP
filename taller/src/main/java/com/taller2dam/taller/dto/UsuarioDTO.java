@@ -28,6 +28,7 @@ public class UsuarioDTO {
     private String telefono;
 
     @NotBlank(message = "Debes introducir un correo")
+    @Email(regexp = ".*@.*\\..*", message = "Email debe ser correcto")
     private String correo;
     @NotBlank(message = "Debes introducir una dirección")
     private Direccion direccion;
@@ -35,11 +36,12 @@ public class UsuarioDTO {
     //Esta lista si puede estar vacía. Un usuario puede no tener aun ningun vahículo.
     //Se hará el registro del vehículo en el layout correspondiente.
     private Set<Vehiculo> vehiculos;
-    @Email(regexp = ".*@.*\\..*", message = "Email debe ser correcto")
-    private String correo;
+
     @NotBlank(message = "Debes incluir una contraseña")
     private String password;    //Cifrarla o hacer que no se muestre
+
     private String imagen;
+
     private String bitmap; //Para la imagen de android
 
     //Está puesto que el rol por defecto sea de USER

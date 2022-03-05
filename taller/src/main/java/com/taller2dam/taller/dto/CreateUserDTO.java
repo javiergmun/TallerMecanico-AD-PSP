@@ -16,7 +16,7 @@ import java.util.Set;
 public class CreateUserDTO {
     private String username;
     private String password;
-    private String password2;
+
 
     private String dni;
     private String telefono;
