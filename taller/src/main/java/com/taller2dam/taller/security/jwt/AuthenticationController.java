@@ -1,4 +1,4 @@
-package com.taller2dam.taller.security;
+package com.taller2dam.taller.security.jwt;
 
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dao.users.UserRole;
