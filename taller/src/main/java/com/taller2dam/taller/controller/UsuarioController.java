@@ -3,7 +3,6 @@ package com.taller2dam.taller.controller;
 import com.taller2dam.taller.dao.Usuario;
 import com.taller2dam.taller.dto.CreateUserDTO;
 import com.taller2dam.taller.dto.UsuarioDTO;
-import com.taller2dam.taller.errores.ApiError;
 import com.taller2dam.taller.errores.UsuarioNotFoundException;
 import com.taller2dam.taller.mapper.UsuarioMapper;
 import com.taller2dam.taller.repository.UsuarioRepository;
@@ -21,7 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -116,19 +115,19 @@ public class UsuarioController {
 
         Usuario usuarioActualizado = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
         checkUsuarioData(usuario);
-                // Actualizamos los datos que queramos
-                usuarioActualizado.setId(usuario.getId());
-                usuarioActualizado.setDni(usuario.getDni());
-                usuarioActualizado.setNombre(usuario.getNombre());
-                usuarioActualizado.setAdministrador(usuario.getAdministrador());
-                usuarioActualizado.setDireccion(usuario.getDireccion());
-                usuarioActualizado.setVehiculos(usuario.getVehiculos());
-                usuarioActualizado.setTelefono(usuario.getTelefono());
-                usuarioActualizado.setImagen(usuario.getImagen());
-                usuarioActualizado.setBitmap(usuario.getBitmap());
+        // Actualizamos los datos que queramos
+        usuarioActualizado.setId(usuario.getId());
+        usuarioActualizado.setDni(usuario.getDni());
+        usuarioActualizado.setUsername(usuario.getUsername());
+        usuarioActualizado.setDireccion(usuario.getDireccion());
+        usuarioActualizado.setVehiculos(usuario.getVehiculos());
+        usuarioActualizado.setTelefono(usuario.getTelefono());
+        usuarioActualizado.setImagen(usuario.getImagen());
+        usuarioActualizado.setBitmap(usuario.getBitmap());
         usuarioActualizado = usuarioRepository.save(usuarioActualizado);
 
         return usuarioMapper.toDTO(usuarioActualizado);
+    }
 
 
     @ApiOperation(value = "Eliminar un usuario", notes = "Elimina un usuario dado su id")

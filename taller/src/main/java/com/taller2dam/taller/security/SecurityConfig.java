@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -50,9 +51,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                    //TODO:indicar aquí todos los entry points y sus permisos. Ejemplo
-                    //. antMatchers(HttpMethod.GET , "/usuarios/**, "/vehiculos/++").hasRole("USER) o hasAnyRole ("USER,"ADMIN") si vale para ambos
-                    .anyRequest().authenticated();
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
+
+               // .antMatchers(HttpMethod.GET, "/producto/**", "/lote/**").hasRole("USER")
+                //.antMatchers(HttpMethod.POST, "/producto/**", "/lote/**").hasRole("ADMIN")
+               // .antMatchers(HttpMethod.PUT, "/producto/**").hasRole("ADMIN")
+                //.antMatchers(HttpMethod.DELETE, "/producto/**").hasRole("ADMIN")
+
+
+                //.antMatchers(HttpMethod.POST, "/pedido/**").hasAnyRole("USER","ADMIN")
+
+                .anyRequest().not().authenticated();
+
         //Añadimos el filtro
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
