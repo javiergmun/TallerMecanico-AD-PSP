@@ -13,8 +13,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-
-//
 //Con esto podríamos obtener la fecha  y hora de creación del usuario al usar el @CreateDate sobre un LocalDateTime
 //@EntityListeners(AuditingEntityListener.class)
 @Builder
@@ -24,6 +22,20 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Entity
 public class Usuario implements UserDetails {
+
+    private long id;
+    private String dni;
+    private String nombre;
+    private Boolean administrador;
+    private String telefono;
+    private Direccion direccion;
+    private String correo;
+    private String password;    //Cifrarla o hacer que no se muestre
+    private String imagen;
+    private String bitmap; //Para la imagen de android
+    private Set<Vehiculo> vehiculos;
+    private Login login;
+
 
     @Id
     private long id;
@@ -47,6 +59,16 @@ public class Usuario implements UserDetails {
     @Basic
     @Column(name = "correo")
     private String correo;
+
+    @Basic
+    @Column(name = "imagen")
+    public String getImagen() {return imagen;}
+    public void setImagen(String imagen) {this.imagen = imagen;}
+
+    @Basic
+    @Column(name = "bitmap")
+    public String getBitmap() {return bitmap;}
+    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
     @OneToMany
@@ -179,21 +201,5 @@ public class Usuario implements UserDetails {
     public String getPassword() {
         return password;
     }
-
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", dni='" + dni + '\'' +
-                ", nombre='" + username + '\'' +
-                // ", administrador=" + administrador +
-                ", telefono=" + telefono +
-                ", direccion=" + direccion +
-                ", correo='" + correo + '\'' +
-                ", password='" + password + '\'' +
-                ", vehiculos=" + vehiculos +
-                ", login=" + login +
-                '}';
-    }
+ 
 }

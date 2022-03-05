@@ -137,6 +137,8 @@ public class VehiculoController {
                 vehiculoActualizado.setModelo(vehiculo.getModelo());
                 vehiculoActualizado.setMatricula(vehiculo.getMatricula());
                 vehiculoActualizado.setColor(vehiculo.getColor());
+                vehiculoActualizado.setImagen(vehiculo.getImagen());
+                vehiculoActualizado.setBitmap(vehiculo.getBitmap());
                 //vehiculoActualizado.setPropietario(vehiculo.getPropietario());
 
                 vehiculoActualizado = vehiculoRepository.save(vehiculoActualizado);

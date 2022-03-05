@@ -116,20 +116,20 @@ public class UsuarioController {
 
         Usuario usuarioActualizado = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
         checkUsuarioData(usuario);
-        // Actualizamos los datos que queramos
-        usuarioActualizado.setId(usuario.getId());
-        usuarioActualizado.setDni(usuario.getDni());
-        usuarioActualizado.setUsername(usuario.getUsername());
-        //usuarioActualizado.setAdministrador(usuario.getAdministrador());
-        usuarioActualizado.setDireccion(usuario.getDireccion());
-        usuarioActualizado.setVehiculos(usuario.getVehiculos());
-        usuarioActualizado.setTelefono(usuario.getTelefono());
-
+                // Actualizamos los datos que queramos
+                usuarioActualizado.setId(usuario.getId());
+                usuarioActualizado.setDni(usuario.getDni());
+                usuarioActualizado.setNombre(usuario.getNombre());
+                usuarioActualizado.setAdministrador(usuario.getAdministrador());
+                usuarioActualizado.setDireccion(usuario.getDireccion());
+                usuarioActualizado.setVehiculos(usuario.getVehiculos());
+                usuarioActualizado.setTelefono(usuario.getTelefono());
+                usuarioActualizado.setImagen(usuario.getImagen());
+                usuarioActualizado.setBitmap(usuario.getBitmap());
         usuarioActualizado = usuarioRepository.save(usuarioActualizado);
 
         return usuarioMapper.toDTO(usuarioActualizado);
 
-    }
 
     @ApiOperation(value = "Eliminar un usuario", notes = "Elimina un usuario dado su id")
     @ApiResponses(value = {
