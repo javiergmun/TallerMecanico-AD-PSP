@@ -25,6 +25,6 @@ public class VehiculoDTO {
     //private Usuario propietario;
     private String imagen;
     private String bitmap; //Para la imagen de android
-
+    private Usuario propietario;
 
 }

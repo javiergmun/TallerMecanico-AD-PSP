@@ -82,7 +82,7 @@ public class Usuario implements UserDetails {
     }
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)
     private Set<Vehiculo> vehiculos;
 
     @OneToOne

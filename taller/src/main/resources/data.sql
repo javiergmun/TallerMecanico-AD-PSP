@@ -15,11 +15,11 @@ VALUES
        ('user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 'Avenida Maria Guerrero,2,28914,Leganes'),
        ('test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 'Calle Monegros,9,28914,Leganes');
 
-INSERT INTO VEHICULO(color, marca, matricula, modelo, imagen)
+INSERT INTO VEHICULO(color, marca, matricula, modelo, imagen, propietario)
 VALUES
-       ('rojo','BMV','6758','gGJ','Esto es una Imagen'),
-       ('negro','Citroen','78699b','C7','Esto es una Imagen'),
-       ('blanco','Test','78699b','Prueba', 'Esto es una Imagen');
+       ('rojo','BMV','6758','gGJ','Esto es una Imagen', 1),
+       ('negro','Citroen','78699b','C7','Esto es una Imagen', 1),
+       ('blanco','Test','78699b','Prueba', 'Esto es una Imagen', 2);
 
 INSERT INTO SERVICIO(precio, tiempo, tipo, imagen, descripcion)
 VALUES
