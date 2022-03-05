@@ -1,5 +1,7 @@
 package com.taller2dam.taller.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.taller2dam.taller.dao.users.UserRole;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -82,6 +84,7 @@ public class Usuario implements UserDetails {
     }
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)
     private Set<Vehiculo> vehiculos;
 
