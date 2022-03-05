@@ -16,13 +16,13 @@ VALUES(3,false,'ytf');
 
 
 INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(1, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 1, 1);
+VALUES(1, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 'Paseo de la Ermita,9,28914,Leganes', 1);
 INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(2,  'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 1, 2);
+VALUES(2,  'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 'Calle Miraflores,10,28914,Leganes', 2);
 INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
-VALUES(3,  'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 1, 3);
+VALUES(3,  'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 'Avenida Maria Guerrero,2,28914,Leganes', 3);
 INSERT INTO USUARIO(id, correo, dni, nombre, contraseña, imagen, telefono, direccion)
-VALUES(10, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 1);
+VALUES(10, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 'Calle Monegros,9,28914,Leganes');
 
 
 
@@ -49,4 +49,3 @@ VALUES(1, CURRENT_TIMESTAMP, 1, 1, 20);
 INSERT INTO CITA(id, fecha, mecanico, servicio_contratado, cliente)
 VALUES(2, CURRENT_TIMESTAMP, 2, 2, 30);
   */
-

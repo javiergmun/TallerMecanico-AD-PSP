@@ -39,9 +39,15 @@ public class Usuario implements UserDetails {
     @Column(name = "telefono")
     private String telefono;
 
+    @Basic
+    @Column(name="direccion")
+    private String direccion;
+    /*
     @OneToOne
     @JoinColumn(name = "direccion", referencedColumnName = "id")
     private Direccion direccion;
+
+     */
 
     @Basic
     @Column(name = "correo")
@@ -108,7 +114,7 @@ public class Usuario implements UserDetails {
         this.telefono = phone;
     }
 
-
+/*
     public Direccion getDireccion() {
         return direccion;
     }
@@ -117,6 +123,15 @@ public class Usuario implements UserDetails {
         this.direccion = address;
     }
 
+ */
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public String getCorreo() {
         return correo;

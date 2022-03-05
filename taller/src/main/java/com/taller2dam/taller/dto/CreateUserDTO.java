@@ -20,6 +20,7 @@ public class CreateUserDTO {
 
     private String dni;
     private String telefono;
+    private String direccion;
 
     //Esto lo dará por campos y lo montaremos
     //private Direccion direccion;
