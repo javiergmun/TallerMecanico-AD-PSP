@@ -24,16 +24,28 @@ import java.util.stream.Collectors;
 public class Usuario implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Basic
+    @Column(name = "correo")
+    private String correo;
 
     @Basic
     @Column(name = "dni")
     private String dni;
 
+    @Basic
+    @Column(name = "nombre")
     private String username;
+
+    @Basic
+    @Column(name = "contraseña")
     private String password;    //Cifrarla o hacer que no se muestre
 
+    @Basic
+    @Column(name = "imagen")
+    private String imagen;
 
     @Basic
     @Column(name = "telefono")
@@ -48,15 +60,6 @@ public class Usuario implements UserDetails {
     private Direccion direccion;
 
      */
-
-    @Basic
-    @Column(name = "correo")
-    private String correo;
-
-    @Basic
-    @Column(name = "imagen")
-    private String imagen;
-
     @Basic
     @Column(name = "bitmap")
     private String bitmap; //Para la imagen de android

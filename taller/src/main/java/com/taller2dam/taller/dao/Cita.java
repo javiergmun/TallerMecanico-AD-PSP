@@ -24,7 +24,7 @@ public class Cita {
     private Servicio servicio;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 /*

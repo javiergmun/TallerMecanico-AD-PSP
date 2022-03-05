@@ -25,7 +25,7 @@ public class Vehiculo {
     private String bitmap; //Para la imagen de android
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }

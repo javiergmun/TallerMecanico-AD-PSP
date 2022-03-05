@@ -20,12 +20,12 @@ public class Mecanico {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
     @Basic
-    @Column(name = "nombre")
+    @Column(name = "username")
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
 
