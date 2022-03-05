@@ -41,11 +41,10 @@ public class Login {
 
     @Override
     public String toString() {
-        return "Login{" +
+        return "Login:{" +
                 "id=" + id +
                 ", activo=" + activo +
                 ", token='" + token + '\'' +
-                //", usuario=" + usuario +
                 '}';
     }
 }

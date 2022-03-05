@@ -114,6 +114,7 @@ public class ServicioController {
                 servicioActualizado.setTipo(servicio.getTipo());
                 servicioActualizado.setTiempo(servicio.getTiempo());
                 servicioActualizado.setImagen(servicio.getImagen());
+                servicioActualizado.setBitmap(servicio.getBitmap());
                 //servicioActualizado.setFecha_inicio(servicio.getFecha_inicio());
                 //servicioActualizado.setFecha_fin(servicio.getFecha_fin());
                 servicioActualizado = servicioRepository.save(servicioActualizado);

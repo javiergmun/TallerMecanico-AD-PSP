@@ -32,6 +32,7 @@ public class Usuario {
     private String correo;
     private String password;    //Cifrarla o hacer que no se muestre
     private String imagen;
+    private String bitmap; //Para la imagen de android
     private Set<Vehiculo> vehiculos;
     private Login login;
 
@@ -79,6 +80,11 @@ public class Usuario {
     public String getImagen() {return imagen;}
     public void setImagen(String imagen) {this.imagen = imagen;}
 
+    @Basic
+    @Column(name = "bitmap")
+    public String getBitmap() {return bitmap;}
+    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
+
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "propietario", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
     @OneToMany
     public Set<Vehiculo> getVehiculos() {return vehiculos;}
@@ -90,8 +96,6 @@ public class Usuario {
     public void setLogin(Login login) {this.login = login;}
 
 
-
-
     @Override
     public String toString() {
         return "Usuario{" +
@@ -99,12 +103,14 @@ public class Usuario {
                 ", dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", administrador=" + administrador +
-                ", telefono=" + telefono +
+                ", telefono='" + telefono + '\'' +
                 ", direccion=" + direccion +
                 ", correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", bitmap='" + bitmap + '\'' +
                 ", vehiculos=" + vehiculos +
-                ", login="+ login +
+                ", login=" + login +
                 '}';
     }
 }

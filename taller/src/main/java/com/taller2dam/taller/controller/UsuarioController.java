@@ -116,6 +116,7 @@ public class UsuarioController {
                 usuarioActualizado.setVehiculos(usuario.getVehiculos());
                 usuarioActualizado.setTelefono(usuario.getTelefono());
                 usuarioActualizado.setImagen(usuario.getImagen());
+                usuarioActualizado.setBitmap(usuario.getBitmap());
 
                 usuarioActualizado = usuarioRepository.save(usuarioActualizado);
                 return ResponseEntity.ok(usuarioMapper.toDTO(usuarioActualizado));
