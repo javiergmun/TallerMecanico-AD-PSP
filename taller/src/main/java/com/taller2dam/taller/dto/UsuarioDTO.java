@@ -4,6 +4,7 @@ import com.taller2dam.taller.dao.Direccion;
 import com.taller2dam.taller.dao.Vehiculo;
 import lombok.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
@@ -28,5 +29,11 @@ public class UsuarioDTO {
     //Esta lista si puede estar vacía. Un usuario puede no tener aun ningun vahículo.
     //Se hará el registro del vehículo en el layout correspondiente.
     private Set<Vehiculo> vehiculos;
+    @Email(regexp = ".*@.*\\..*", message = "Email debe ser correcto")
+    private String correo;
+    @NotBlank(message = "Debes incluir una contraseña")
+    private String password;    //Cifrarla o hacer que no se muestre
+    private String imagen;
+    private String bitmap; //Para la imagen de android
 
 }

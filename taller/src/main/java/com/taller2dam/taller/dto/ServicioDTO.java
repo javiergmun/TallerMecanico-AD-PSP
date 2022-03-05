@@ -23,6 +23,9 @@ public class ServicioDTO {
 
     @NotBlank(message = "Debes fijar un tiempo de trabajo")
     private Double tiempo;
+    private String imagen;
+    private String bitmap; //Para la imagen de android
+    private String descripcion;
 /*
     @NotBlank(message = "Debes incluir una fecha de inicio")
     private LocalDateTime fecha_inicio;
