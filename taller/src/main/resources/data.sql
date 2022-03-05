@@ -9,14 +9,14 @@ INSERT INTO LOGIN(id, esta_activo,token)
 VALUES(3,false,'ytf');
 
 
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(1, true, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', '58568668', 1, 1);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(2, false, 'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', '58568668', 1, 2);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion, login)
-VALUES(3, false, 'user2@user.com', 'g7878giu', 'Javier', '5685tygku', '58568668', 1, 3);
-INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, telefono, direccion)
-VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', '58568668', 1);
+INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(1, true, 'admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 1, 1);
+INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(2, false, 'user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 1, 2);
+INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion, login)
+VALUES(3, false, 'user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 1, 3);
+INSERT INTO USUARIO(id, es_administrador, correo, dni, nombre, contraseña, imagen, telefono, direccion)
+VALUES(10, true, 'test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen4', '58568668', 1);
 
 
 INSERT INTO VEHICULO(id, color, marca, matricula, modelo, imagen)
@@ -27,10 +27,10 @@ INSERT INTO VEHICULO(id, color, marca, matricula, modelo, imagen)
 VALUES(10,'blanco','Test','78699b','Prueba', 'Esto es una Imagen');
 
 
-INSERT INTO SERVICIO(id, precio, tiempo, tipo)
-VALUES(1, 100.0, 50.0, 'chapa y pintura');
-INSERT INTO SERVICIO(id, precio, tiempo, tipo)
-VALUES(2, 60.0, 30.0, 'cambio neumáticos');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen)
+VALUES(1, 100.0, 50.0, 'chapa y pintura', 'imagen1');
+INSERT INTO SERVICIO(id, precio, tiempo, tipo, imagen)
+VALUES(2, 60.0, 30.0, 'cambio neumáticos', 'imagen2');
 
 INSERT INTO MECANICO(id, nombre, salario)
 VALUES(1, 'Paco', 1200.0);

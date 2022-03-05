@@ -113,6 +113,7 @@ public class ServicioController {
                 servicioActualizado.setPrecio(servicio.getPrecio());
                 servicioActualizado.setTipo(servicio.getTipo());
                 servicioActualizado.setTiempo(servicio.getTiempo());
+                servicioActualizado.setImagen(servicio.getImagen());
                 //servicioActualizado.setFecha_inicio(servicio.getFecha_inicio());
                 //servicioActualizado.setFecha_fin(servicio.getFecha_fin());
                 servicioActualizado = servicioRepository.save(servicioActualizado);
