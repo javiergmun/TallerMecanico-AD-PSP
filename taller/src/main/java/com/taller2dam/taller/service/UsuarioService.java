@@ -33,29 +33,26 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(username);
     }
 
-    public Usuario saveUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
 
     //Creación de usuario con seguridad
-    public Usuario saveUsuarioSeguro(CreateUserDTO newUsuario) throws Exception {
+    public Usuario saveUsuario(CreateUserDTO newUsuario) throws Exception {
 
-        if(newUsuario.getPassword().contentEquals(newUsuario.getPassword2())){
-            Usuario usuario = Usuario.builder()
+        //if(newUsuario.getPassword().contentEquals(newUsuario.getPassword2())){
+        Usuario usuario = Usuario.builder()
                     .username(newUsuario.getUsername())
                     .password(passwordEncoder.encode(newUsuario.getPassword()))
                     .dni(newUsuario.getDni())
                     .telefono(newUsuario.getTelefono())
                     .correo(newUsuario.getCorreo())
-                   // .direccion(newUsuario.getDireccion())
+                    //.direccion(newUsuario.getDireccion())
                     .roles(Stream.of(UserRole.USER).collect(Collectors.toSet()))  //Con Java 9 se puede hacer como Set.of(UserRole.USER)
                     .build();
 
-            return saveUsuario(usuario);
-        }else{
-            throw new Exception();
-            //Lanzada en caso de que no coincidan las contraseñas. TODO: Se podrían crear errores personalizados
-        }
+            return usuarioRepository.save(usuario);
+       // }else{
+       //     throw new Exception();
+       //     //Lanzada en caso de que no coincidan las contraseñas. TODO: Se podrían crear errores personalizados
+       // }
     }
 
     //A falta de probar su funcionamiento

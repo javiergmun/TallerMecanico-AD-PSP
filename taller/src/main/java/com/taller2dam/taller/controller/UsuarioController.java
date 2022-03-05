@@ -78,29 +78,36 @@ public class UsuarioController {
     }
 
 
+//  @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
+//  @ApiResponses(value = {
+//          @ApiResponse(code = 200, message = "Created", response = UsuarioDTO.class),
+//          @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
+//  })
+//  @PostMapping("/usuario")
+//  public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO) {
+//      try {
+//          Usuario usuario = usuarioMapper.fromDTO(usuarioDTO);
+//          checkUsuarioData(usuario);
+//          Usuario usuarioInsertado = usuarioRepository.save(usuario);
+//          return ResponseEntity.ok(usuarioMapper.toDTO(usuarioInsertado));
+//      } catch (Exception e) {
+//          System.out.println(e.getMessage());
+//          throw new RuntimeException("Insertar, Error al insertar el usuario. Campos incorrectos " + e.getMessage());
+//      }
+//  }
+
+
+    //Crear usuario seguro
     @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Created", response = UsuarioDTO.class),
+            @ApiResponse(code = 200, message = "Created", response = CreateUserDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
     @PostMapping("/usuario")
-    public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO) {
-        try {
-            Usuario usuario = usuarioMapper.fromDTO(usuarioDTO);
-            checkUsuarioData(usuario);
-            Usuario usuarioInsertado = usuarioRepository.save(usuario);
-            return ResponseEntity.ok(usuarioMapper.toDTO(usuarioInsertado));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException("Insertar, Error al insertar el usuario. Campos incorrectos " + e.getMessage());
-        }
-    }
-
-    //Crear usuario seguro
-
-    @PostMapping("/usuario")
-    public ResponseEntity<UsuarioDTO> saveSeguro(@RequestBody CreateUserDTO nuevoUsuario) throws Exception {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioMapper.toDTO(usuarioService.saveUsuarioSeguro(nuevoUsuario)));
+    public ResponseEntity<UsuarioDTO> save(@RequestBody CreateUserDTO nuevoUsuario) throws Exception {
+        Usuario usuario = usuarioMapper.fromCreateDTOtoUsuario(nuevoUsuario);
+        checkUsuarioData(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioMapper.toDTO(usuarioService.saveUsuario(nuevoUsuario)));
     }
 
 

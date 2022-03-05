@@ -2,6 +2,7 @@ package com.taller2dam.taller.mapper;
 
 
 import com.taller2dam.taller.dao.Usuario;
+import com.taller2dam.taller.dto.CreateUserDTO;
 import com.taller2dam.taller.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -33,6 +34,10 @@ public class UsuarioMapper {
         //       .build();
 
 
+    }
+
+    public Usuario fromCreateDTOtoUsuario(CreateUserDTO nuevoUsuario) {
+        return modelMapper.map(nuevoUsuario, Usuario.class);
     }
 
     public List<UsuarioDTO> toDTO(List<Usuario> usuario) {
