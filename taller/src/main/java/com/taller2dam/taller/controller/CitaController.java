@@ -147,10 +147,10 @@ public class CitaController {
 
 
     private void checkCitaData(Cita cita) {
-        /*
-        if (login.getMarca() == null || vehiculo.getMarca().isEmpty()) {
-            throw new RuntimeException("La marca es obligatoria");
+
+        if (cita.getServicio() == null || cita.getMecanico()== null) {
+            throw new RuntimeException("La marca es obligatoria y necesitas un mecanico que lo realice");
         }
-         */
+
     }
 }
