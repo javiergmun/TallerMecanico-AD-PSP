@@ -20,8 +20,8 @@ public class UsuarioRepositoryTest {
     private final Usuario usuarioTest = Usuario.builder()
             .id(1)
             .dni("685933P")
-            .nombre("Usuario Test")
-            .administrador(false)
+            .username("Usuario Test")
+            //.administrador(false)
             .telefono("43439734")
             .build();
     @Autowired
@@ -36,8 +36,8 @@ public class UsuarioRepositoryTest {
                 () -> assertNotNull(user),
                 () -> assertEquals(usuarioTest.getId(), user.getId()),
                 () -> assertEquals(usuarioTest.getDni(), user.getDni()),
-                () -> assertEquals(usuarioTest.getNombre(), user.getNombre()),
-                () -> assertEquals(usuarioTest.getAdministrador(), user.getAdministrador()),
+                () -> assertEquals(usuarioTest.getUsername(), user.getUsername()),
+                //() -> assertEquals(usuarioTest.getAdministrador(), user.getAdministrador()),
                 () -> assertEquals(usuarioTest.getTelefono(), user.getTelefono())
 
         );
@@ -57,8 +57,8 @@ public class UsuarioRepositoryTest {
         assertAll(
                 () -> assertNotNull(usuarioId),
                 () -> assertEquals(user.getDni(), usuarioId.getDni()),
-                () -> assertEquals(user.getNombre(), usuarioId.getNombre()),
-                () -> assertEquals(user.getAdministrador(), usuarioId.getAdministrador()),
+                () -> assertEquals(user.getUsername(), usuarioId.getUsername()),
+               // () -> assertEquals(user.getAdministrador(), usuarioId.getAdministrador()),
                 () -> assertEquals(user.getTelefono(), usuarioId.getTelefono())
         );
     }
@@ -67,14 +67,14 @@ public class UsuarioRepositoryTest {
     public void updateUsuario() {
         var user = usuarioRepository.save(usuarioTest);
         user = usuarioRepository.findById(user.getId()).get();
-        user.setNombre("Usuario de prueba modificado");
+        user.setUsername("Usuario de prueba modificado");
 
         var res = usuarioRepository.save(user);
         assertAll(
                 () -> assertNotNull(res),
-                () -> assertEquals("Usuario de prueba modificado", res.getNombre()),
+                () -> assertEquals("Usuario de prueba modificado", res.getUsername()),
                 () -> assertEquals(usuarioTest.getDni(), res.getDni()),
-                () -> assertEquals(usuarioTest.getAdministrador(), res.getAdministrador()),
+               // () -> assertEquals(usuarioTest.getAdministrador(), res.getAdministrador()),
                 () -> assertEquals(usuarioTest.getTelefono(), res.getTelefono())
 
         );

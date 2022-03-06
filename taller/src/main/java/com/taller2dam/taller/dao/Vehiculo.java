@@ -1,5 +1,7 @@
 package com.taller2dam.taller.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -20,11 +22,12 @@ public class Vehiculo {
     private String modelo;
     private String matricula;
     private String color;
-    //private Usuario propietario;
+    private Usuario propietario;
     private String imagen;
     private String bitmap; //Para la imagen de android
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
@@ -67,7 +70,8 @@ public class Vehiculo {
     public void setColor(String color) {
         this.color = color;
     }
-/*
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "propietario", referencedColumnName = "id")
     public Usuario getPropietario() {
@@ -77,7 +81,7 @@ public class Vehiculo {
         this.propietario = propietario;
     }
 
- */
+
 
     @Basic
     @Column(name = "imagen")

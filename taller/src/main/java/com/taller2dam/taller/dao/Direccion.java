@@ -5,8 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.UUID;
-
+/*
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
@@ -20,6 +19,7 @@ public class Direccion {
     private String numero;
     private String codigo;
     private String localidad;
+
 
     @Id
     @GeneratedValue
@@ -57,3 +57,5 @@ public class Direccion {
                 '}';
     }
 }
+
+ */

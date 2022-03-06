@@ -29,6 +29,7 @@ public class Servicio {
     //private LocalDateTime fecha_fin;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
