@@ -22,7 +22,7 @@ public class CitaDTO {
 
      */
     @NotBlank(message = "Debes introducir una fecha")
-    private LocalDateTime fecha;
+    private String fecha;
     @NotBlank(message = "Debes introducir un usuario")
     private Usuario usuario;
     @NotBlank(message = "Debes introducir un mecánico")

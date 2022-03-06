@@ -96,7 +96,6 @@ public class UsuarioController {
 //      }
 //  }
 
-
     //Crear usuario seguro
     @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
     @ApiResponses(value = {
