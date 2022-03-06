@@ -10,16 +10,16 @@ VALUES(3,false,'ytf');
 
 INSERT INTO USUARIO(correo, dni, nombre, contraseña, imagen, telefono, direccion)
 VALUES
-       ('admin@admin.com', 'g7878giu', 'Jose', '5685tygku', 'imagen1', '58568668', 'Paseo de la Ermita,9,28914,Leganes'),
-       ('user1@user.com', 'g7878giu', 'Gorge', '5685tygku', 'imagen2', '58568668', 'Calle Miraflores,10,28914,Leganes'),
-       ('user2@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen3', '58568668', 'Avenida Maria Guerrero,2,28914,Leganes'),
-       ('javier@user.com', 'g7878giu', 'Javier', '5685tygku', 'imagen4', '58568668', 'Avenida Maria Guerrero,3,28914,Leganes'),
-       ('andrea@user.com', 'g7878giu', 'Andrea', '5685tygku', 'imagen5', '58568668', 'Avenida Maria Guerrero,4,28914,Leganes'),
-       ('daniel@user.com', 'g7878giu', 'Daniel', '5685tygku', 'imagen6', '58568668', 'Avenida Maria Guerrero,5,28914,Leganes'),
-       ('mario@user.com', 'g7878giu', 'Mario', '5685tygku', 'imagen7', '58568668', 'Avenida Maria Guerrero,6,28914,Leganes'),
-       ('adrian@user.com', 'g7878giu', 'Adrian', '5685tygku', 'imagen8', '58568668', 'Avenida Maria Guerrero,7,28914,Leganes'),
-       ('teresa@user.com', 'g7878giu', 'Teresa', '5685tygku', 'imagen9', '58568668', 'Avenida Maria Guerrero,8,28914,Leganes'),
-       ('test@test.com', 'g7878giu', 'Para test', '5685tygku', 'imagen10', '58568668', 'Calle Monegros,9,28914,Leganes');
+       ('admin@admin.com', '787856P', 'Jose', '5685tygku', 'imagen1', '58568668', 'Paseo de la Ermita,9,28914,Leganes'),
+       ('user1@user.com', '234532U', 'Jorge', '5685tygku', 'imagen2', '65464654', 'Calle Miraflores,10,28914,Leganes'),
+       ('user2@user.com', '675432Y', 'Juanma', '5685tygku', 'imagen3', '90998888', 'Avenida Maria Guerrero,2,28914,Leganes'),
+       ('javier@user.com', '764432M', 'Javier', '5685tygku', 'imagen4', '32214355', 'Avenida Maria Guerrero,3,28914,Leganes'),
+       ('andrea@user.com', '098789R', 'Andrea', '5685tygku', 'imagen5', '82675547', 'Avenida Maria Guerrero,4,28914,Leganes'),
+       ('daniel@user.com', '432435K', 'Daniel', '5685tygku', 'imagen6', '96776765', 'Avenida Maria Guerrero,5,28914,Leganes'),
+       ('mario@user.com', '356567I', 'Mario', '5685tygku', 'imagen7', '14352455', 'Avenida Maria Guerrero,6,28914,Leganes'),
+       ('adrian@user.com', '654574Y', 'Adrian', '5685tygku', 'imagen8', '12354254', 'Avenida Maria Guerrero,7,28914,Leganes'),
+       ('teresa@user.com', '385932V', 'Teresa', '5685tygku', 'imagen9', '97686780', 'Avenida Maria Guerrero,8,28914,Leganes'),
+       ('test@test.com', '547532N', 'Para test', '5685tygku', 'imagen10', '23132344', 'Calle Monegros,9,28914,Leganes');
 
 INSERT INTO VEHICULO(color, marca, matricula, modelo, imagen, propietario)
 VALUES
@@ -34,10 +34,10 @@ VALUES
 
 INSERT INTO SERVICIO(precio, tiempo, tipo, imagen, descripcion)
 VALUES
-       (100.0, 50.0, 'chapa y pintura', 'https://www.motormontesinos.com/wp-content/uploads/2014/08/profesionales-2.jpg', 'Reparación en la carrocería a y pintada del automovil con nuestras mejores pinturas.'),
-       (60.0, 30.0, 'cambio aceite', 'https://media.istockphoto.com/photos/draining-down-old-engine-oil-picture-id453646561?k=20&m=453646561&s=612x612&w=0&h=q8Ja5WnitcXheX5Kb3iBDp667175faPbajSwNgvjUYY=', 'Cambio de aceite de la manera más rapida y limpia. Además de sostenible.'),
-       (60.0, 30.0, 'cambio neumáticos', 'https://www.neumaticosamoreno.es/wp-content/uploads/2020/08/Cambio-de-neumaticos-Taller-A-Moreno-Villalba-Servicio-Cambia-tus-Neumaticos.jpg', 'Cambio de neumaticos completos por unos nuevos o semiuevos de las mejores marcas.'),
-       (80.0, 30.0, 'pulir faros', 'https://talleresorchill.com/wp-content/uploads/2020/05/pulido-faros.jpg', 'Deja tus faros brillantes para tener una vision más clara de la carretera');
+       (100.0, 50.0, 'Chapa y pintura', 'https://www.motormontesinos.com/wp-content/uploads/2014/08/profesionales-2.jpg', 'Reparación en la carrocería a y pintada del automovil con nuestras mejores pinturas.'),
+       (60.0, 30.0, 'Cambio aceite', 'https://media.istockphoto.com/photos/draining-down-old-engine-oil-picture-id453646561?k=20&m=453646561&s=612x612&w=0&h=q8Ja5WnitcXheX5Kb3iBDp667175faPbajSwNgvjUYY=', 'Cambio de aceite de la manera más rapida y limpia. Además de sostenible.'),
+       (60.0, 30.0, 'Cambio neumáticos', 'https://www.neumaticosamoreno.es/wp-content/uploads/2020/08/Cambio-de-neumaticos-Taller-A-Moreno-Villalba-Servicio-Cambia-tus-Neumaticos.jpg', 'Cambio de neumaticos completos por unos nuevos o semiuevos de las mejores marcas.'),
+       (80.0, 30.0, 'Pulir faros', 'https://talleresorchill.com/wp-content/uploads/2020/05/pulido-faros.jpg', 'Deja tus faros brillantes para tener una vision más clara de la carretera');
 
 INSERT INTO MECANICO(username, salario)
 VALUES
