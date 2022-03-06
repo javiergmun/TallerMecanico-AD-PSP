@@ -21,6 +21,12 @@ VALUES
        ('teresa@user.com', '385932V', 'Teresa', '5685tygku', 'imagen9', '97686780', 'Avenida Maria Guerrero,8,28914,Leganes'),
        ('test@test.com', '547532N', 'Para test', '5685tygku', 'imagen10', '23132344', 'Calle Monegros,9,28914,Leganes');
 
+insert into usuario_roles (usuario_id, roles) values (1,'USER');
+insert into usuario_roles (usuario_id, roles) values (1,'ADMIN');
+insert into usuario_roles (usuario_id, roles) values (2,'USER');
+insert into usuario_roles (usuario_id, roles) values (3,'USER');
+insert into usuario_roles (usuario_id, roles) values (4,'USER');
+
 INSERT INTO VEHICULO(color, marca, matricula, modelo, imagen, propietario)
 VALUES
        ('rojo','BMV','6758','gGJ','Esto es una Imagen', 1),

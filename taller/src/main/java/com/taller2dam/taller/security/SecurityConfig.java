@@ -1,6 +1,5 @@
 package com.taller2dam.taller.security;
 
-import com.taller2dam.taller.dao.users.CustomUserDetailsService;
 import com.taller2dam.taller.security.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -26,17 +25,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 //Nos permitirá más adelante indicar quien puede acceder, si es necesario estas autenticado o no...
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomUserDetailsService customUserDetailsService;
+    private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
-    @Bean //exponer nuestro mecanismo de autenticación
+    @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -51,17 +50,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                    .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                    .antMatchers(HttpMethod.GET, "/mecanicos/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.POST, "/mecanicos/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.PUT, "/mecanicos/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.DELETE, "/mecanicos/**").hasRole("ADMIN")
 
-               // .antMatchers(HttpMethod.GET, "/producto/**", "/lote/**").hasRole("USER")
-                //.antMatchers(HttpMethod.POST, "/producto/**", "/lote/**").hasRole("ADMIN")
-               // .antMatchers(HttpMethod.PUT, "/producto/**").hasRole("ADMIN")
-                //.antMatchers(HttpMethod.DELETE, "/producto/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/servicios/**").hasAnyRole("USER", "ADMIN")
+                    .antMatchers(HttpMethod.POST, "/servicios/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
 
+                    .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole( "ADMIN")
 
-                //.antMatchers(HttpMethod.POST, "/pedido/**").hasAnyRole("USER","ADMIN")
-
-                .anyRequest().not().authenticated();
+                //sobre cualquier otra petición no reflejada solo pediremos que esté autenticado
+                    .anyRequest().authenticated();
 
         //Añadimos el filtro
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);

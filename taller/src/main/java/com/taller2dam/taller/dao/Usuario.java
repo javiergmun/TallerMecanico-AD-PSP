@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.taller2dam.taller.dao.users.UserRole;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 //Con esto podríamos obtener la fecha  y hora de creación del usuario al usar el @CreateDate sobre un LocalDateTime
-//@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
 @Builder
 @Table(name = "usuario")
 @NamedQuery(name = "usuario.findAll", query = "SELECT u FROM Usuario u")

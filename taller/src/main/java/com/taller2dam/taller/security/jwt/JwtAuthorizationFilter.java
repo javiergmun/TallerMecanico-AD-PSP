@@ -2,7 +2,7 @@ package com.taller2dam.taller.security.jwt;
 
 
 import com.taller2dam.taller.dao.Usuario;
-import com.taller2dam.taller.dao.users.CustomUserDetailsService;
+import com.taller2dam.taller.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +22,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
+
     private final JwtProvider tokenProvider;
     private final CustomUserDetailsService userDetailsService;
 
@@ -55,10 +56,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader(JwtProvider.TOKEN_HEADER);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(JwtProvider.TOKEN_PREFIX)) {
-            return bearerToken.substring(JwtProvider.TOKEN_PREFIX.length());
-        } else {
-            return null;
+            return bearerToken.substring(JwtProvider.TOKEN_PREFIX.length(), bearerToken.length());
         }
+            return null;
 
     }
 }

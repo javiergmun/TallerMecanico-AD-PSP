@@ -29,7 +29,7 @@ public class UsuarioService {
         return usuarioRepository.findById(usuarioId);
     }
 
-    public Optional<Usuario> findByUsername(String username) {
+    public Optional<Usuario> findUserByUsername(String username) {
         return usuarioRepository.findByUsername(username);
     }
 
@@ -49,10 +49,6 @@ public class UsuarioService {
                     .build();
 
             return usuarioRepository.save(usuario);
-       // }else{
-       //     throw new Exception();
-       //     //Lanzada en caso de que no coincidan las contraseñas. TODO: Se podrían crear errores personalizados
-       // }
     }
 
     //A falta de probar su funcionamiento
