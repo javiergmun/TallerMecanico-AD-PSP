@@ -3,6 +3,7 @@ package com.taller2dam.taller.dto;
 import com.taller2dam.taller.dao.Mecanico;
 import com.taller2dam.taller.dao.Servicio;
 import com.taller2dam.taller.dao.Usuario;
+import com.taller2dam.taller.dao.Vehiculo;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -29,5 +30,7 @@ public class CitaDTO {
     private Mecanico mecanico;
     @NotBlank(message = "Debes introducir un servicio")
     private Servicio servicio;
+    @NotBlank(message = "Debes introducir un vehiculo")
+    private Vehiculo vehiculo;
 
 }
