@@ -23,9 +23,9 @@ VALUES
 
 INSERT INTO SERVICIO(precio, tiempo, tipo, imagen, descripcion)
 VALUES
-       (100.0, 50.0, 'chapa y pintura', 'imagen1', 'descripcion1'),
-       (60.0, 30.0, 'cambio neumáticos', 'imagen2', 'descripcion2'),
-       (80.0, 30.0, 'pulir faros', 'imagen3', 'descripcion3');
+       (100.0, 50.0, 'chapa y pintura', 'https://www.motormontesinos.com/wp-content/uploads/2014/08/profesionales-2.jpg', 'descripcion1'),
+       (60.0, 30.0, 'cambio neumáticos', 'https://www.neumaticosamoreno.es/wp-content/uploads/2020/08/Cambio-de-neumaticos-Taller-A-Moreno-Villalba-Servicio-Cambia-tus-Neumaticos.jpg', 'descripcion2'),
+       (80.0, 30.0, 'pulir faros', 'https://talleresorchill.com/wp-content/uploads/2020/05/pulido-faros.jpg', 'descripcion3');
 
 INSERT INTO MECANICO(username, salario)
 VALUES
