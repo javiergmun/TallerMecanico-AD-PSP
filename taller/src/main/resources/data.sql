@@ -46,11 +46,11 @@ VALUES
 
 INSERT INTO CITA(fecha, mecanico, servicio_contratado, cliente)
 VALUES
-       (CURRENT_TIMESTAMP, 1, 1, 1),
-       (CURRENT_TIMESTAMP, 2, 2, 2),
-       (CURRENT_TIMESTAMP, 2, 3, 3),
-       (CURRENT_TIMESTAMP, 1, 2, 4),
-       (CURRENT_TIMESTAMP, 1, 2, 5),
-       (CURRENT_TIMESTAMP, 2, 3, 3),
-       (CURRENT_TIMESTAMP, 1, 3, 4),
-       (CURRENT_TIMESTAMP, 2, 2, 2);
+       ('2022-10-10T11:00', 1, 1, 1),
+       ('2022-10-10T12:00', 2, 2, 2),
+       ('2022-10-11T09:00', 2, 3, 3),
+       ('2022-10-11T11:00', 1, 2, 4),
+       ('2022-10-11T16:00', 1, 2, 5),
+       ('2022-10-12T11:00', 2, 3, 3),
+       ('2022-10-12T18:00', 1, 3, 4),
+       ('2022-10-13T10:00', 2, 2, 2);

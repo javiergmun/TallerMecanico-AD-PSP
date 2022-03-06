@@ -25,8 +25,13 @@ public class Cita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 /*
     @Basic
     @Column(name = "precio")
@@ -38,23 +43,43 @@ public class Cita {
     @Basic
     @CreationTimestamp
     @Column(name = "fecha")
-    public LocalDateTime getFecha() {return fecha;}
-    public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
 
     @OneToOne
     @JoinColumn(name = "cliente", referencedColumnName = "id")
-    public Usuario getUsuario() {return usuario;}
-    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     @OneToOne
     @JoinColumn(name = "mecanico", referencedColumnName = "id")
-    public Mecanico getMecanico() {return mecanico;}
-    public void setMecanico(Mecanico mecanico) {this.mecanico = mecanico;}
+    public Mecanico getMecanico() {
+        return mecanico;
+    }
+
+    public void setMecanico(Mecanico mecanico) {
+        this.mecanico = mecanico;
+    }
 
     @OneToOne
     @JoinColumn(name = "servicio_contratado", referencedColumnName = "id")
-    public Servicio getServicio() {return servicio;}
-    public void setServicio(Servicio servicio) {this.servicio = servicio;}
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
 
     @Override
     public String toString() {
