@@ -70,7 +70,7 @@ public class LoginController {
             @ApiResponse(code = 200, message = "OK", response = LoginDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/login/{id}")
+    @GetMapping("/logins/{id}")
     public ResponseEntity<LoginDTO> findById(@PathVariable Long id) {
         Login login = loginRepository.findById(id).orElse(null);
         if (login == null) {
@@ -85,7 +85,7 @@ public class LoginController {
             @ApiResponse(code = 200, message = "Created", response = LoginDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/login")
+    @PostMapping("/logins")
     public ResponseEntity<LoginDTO> save(@RequestBody LoginDTO loginDTO) {
         try {
             Login login = loginMapper.fromDTO(loginDTO);
@@ -105,7 +105,7 @@ public class LoginController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/login/{id}")
+    @PutMapping("/logins/{id}")
     public ResponseEntity<LoginDTO> update(@PathVariable Long id, @RequestBody Login login) {
         try {
             Login loginActualizado = loginRepository.findById(id).orElse(null);
@@ -132,7 +132,7 @@ public class LoginController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/login/{id}")
+    @DeleteMapping("/logins/{id}")
     public ResponseEntity<LoginDTO> delete(@PathVariable Long id) {
         try {
             Login login = loginRepository.findById(id).orElse(null);

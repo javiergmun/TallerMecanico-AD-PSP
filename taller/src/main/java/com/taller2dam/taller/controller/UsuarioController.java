@@ -64,7 +64,7 @@ public class UsuarioController {
             @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/usuarios/{id}")
     public UsuarioDTO findById(@PathVariable Long id) {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
         return usuarioMapper.toDTO(usuario);
@@ -102,7 +102,7 @@ public class UsuarioController {
             @ApiResponse(code = 200, message = "Created", response = CreateUserDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/usuario")
+    @PostMapping("/usuarios")
     public ResponseEntity<UsuarioDTO> save(@RequestBody CreateUserDTO nuevoUsuario) throws Exception {
         Usuario usuario = usuarioMapper.fromCreateDTOtoUsuario(nuevoUsuario);
         checkUsuarioData(usuario);
@@ -116,7 +116,7 @@ public class UsuarioController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/usuario/{id}")
+    @PutMapping("/usuarios/{id}")
     public UsuarioDTO update(@PathVariable Long id, @RequestBody Usuario usuario) {
 
         Usuario usuarioActualizado = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
@@ -142,7 +142,7 @@ public class UsuarioController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/usuario/{id}")
+    @DeleteMapping("/usuarios/{id}")
     public ResponseEntity<UsuarioDTO> delete(@PathVariable Long id) {
 
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
@@ -172,7 +172,7 @@ public class UsuarioController {
             @ApiResponse(code = 200, message = "OK", response = UsuarioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request"),
     })
-    @PostMapping(value = "/usuario/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/usuarios/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> nuevoUsuario(
             @RequestPart("usuario") UsuarioDTO usuarioDTO) {
         try {
@@ -192,7 +192,7 @@ public class UsuarioController {
             @ApiResponse(code = 200, message = "OK: Lista de usuarios", response = UsuarioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request: Lista no encontrada")
     })
-    @GetMapping("/all/usuario")
+    @GetMapping("/all/usuarios")
     public ResponseEntity<?> listado(
             // Podemos buscar por los campos que queramos... nombre, precio... así construir consultas
             @RequestParam(required = false, name = "nombre") Optional<String> nombre,

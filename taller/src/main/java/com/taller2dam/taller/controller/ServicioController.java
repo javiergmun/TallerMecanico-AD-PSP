@@ -66,7 +66,7 @@ public class ServicioController {
             @ApiResponse(code = 200, message = "OK", response = ServicioDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/servicio/{id}")
+    @GetMapping("/servicios/{id}")
     public ResponseEntity<ServicioDTO> findById(@PathVariable Long id) {
         Servicio servicio = servicioRepository.findById(id).orElse(null);
         if (servicio == null) {
@@ -81,7 +81,7 @@ public class ServicioController {
             @ApiResponse(code = 200, message = "Created", response = ServicioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/servicio")
+    @PostMapping("/servicios")
     public ResponseEntity<ServicioDTO> save(@RequestBody ServicioDTO servicioDTO) {
         try {
             Servicio servicio = servicioMapper.fromDTO(servicioDTO);
@@ -100,7 +100,7 @@ public class ServicioController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/servicio/{id}")
+    @PutMapping("/servicios/{id}")
     public ResponseEntity<ServicioDTO> update(@PathVariable Long id, @RequestBody Servicio servicio) {
         try {
             Servicio servicioActualizado = servicioRepository.findById(id).orElse(null);
@@ -133,7 +133,7 @@ public class ServicioController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/servicio/{id}")
+    @DeleteMapping("/servicios/{id}")
     public ResponseEntity<ServicioDTO> delete(@PathVariable Long id) {
         try {
             Servicio servicio = servicioRepository.findById(id).orElse(null);
@@ -168,7 +168,7 @@ public class ServicioController {
             @ApiResponse(code = 200, message = "OK", response = ServicioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request"),
     })
-    @PostMapping(value = "/servicio/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/servicios/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> nuevoServicio(
             @RequestPart("servicio") ServicioDTO servicioDTO) {
 
@@ -189,7 +189,7 @@ public class ServicioController {
             @ApiResponse(code = 200, message = "OK: Lista de servicios", response = ServicioDTO.class),
             @ApiResponse(code = 400, message = "Bad Request: Lista no encontrada")
     })
-    @GetMapping("/all/servicio")
+    @GetMapping("/all/servicios")
     public ResponseEntity<?> listado(
             // Podemos buscar por los campos que quieramos... nombre, precio... así construir consultas
             @RequestParam(required = false, name = "nombre") Optional<String> nombre,

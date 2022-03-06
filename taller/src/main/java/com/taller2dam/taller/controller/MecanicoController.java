@@ -65,7 +65,7 @@ public class MecanicoController {
             @ApiResponse(code = 200, message = "OK", response = MecanicoDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/mecanico/{id}")
+    @GetMapping("/mecanicos/{id}")
     public ResponseEntity<MecanicoDTO> findById(@PathVariable Long id) {
         Mecanico mecanico = mecanicoRepository.findById(id).orElse(null);
         if (mecanico == null) {
@@ -80,7 +80,7 @@ public class MecanicoController {
             @ApiResponse(code = 200, message = "Created", response = MecanicoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/mecanico")
+    @PostMapping("/mecanicos")
     public ResponseEntity<MecanicoDTO> save(@RequestBody MecanicoDTO mecanicoDTO) {
         try {
             Mecanico mecanico = mecanicoMapper.fromDTO(mecanicoDTO);
@@ -99,7 +99,7 @@ public class MecanicoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/mecanico/{id}")
+    @PutMapping("/mecanicos/{id}")
     public ResponseEntity<MecanicoDTO> update(@PathVariable Long id, @RequestBody Mecanico mecanico) {
         try {
             Mecanico mecanicoActualizado = mecanicoRepository.findById(id).orElse(null);
@@ -127,7 +127,7 @@ public class MecanicoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/mecanico/{id}")
+    @DeleteMapping("/mecanicos/{id}")
     public ResponseEntity<MecanicoDTO> delete(@PathVariable Long id) {
         try {
             Mecanico mecanico = mecanicoRepository.findById(id).orElse(null);
@@ -162,7 +162,7 @@ public class MecanicoController {
             @ApiResponse(code = 200, message = "OK", response = MecanicoDTO.class),
             @ApiResponse(code = 400, message = "Bad Request"),
     })
-    @PostMapping(value = "/mecanico/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/mecanicos/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> nuevoMecanico(
             @RequestPart("mecanico") MecanicoDTO mecanicoDTO) {
 

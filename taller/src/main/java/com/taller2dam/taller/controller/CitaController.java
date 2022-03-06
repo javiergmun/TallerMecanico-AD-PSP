@@ -69,7 +69,7 @@ public class CitaController {
             @ApiResponse(code = 200, message = "OK", response = CitaDTO.class),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @GetMapping("/cita/{id}")
+    @GetMapping("/citas/{id}")
     public ResponseEntity<CitaDTO> findById(@PathVariable Long id) {
         Cita cita = citaRepository.findById(id).orElse(null);
         if (cita == null) {
@@ -84,7 +84,7 @@ public class CitaController {
             @ApiResponse(code = 200, message = "Created", response = CitaDTO.class),
             @ApiResponse(code = 400, message = "Bad Request") //Excepcion personalizada
     })
-    @PostMapping("/cita")
+    @PostMapping("/citas")
     public ResponseEntity<CitaDTO> save(@RequestBody CitaDTO citaDTO) {
         try {
             Cita cita = citaMapper.fromDTO(citaDTO);
@@ -104,7 +104,7 @@ public class CitaController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/cita/{id}")
+    @PutMapping("/citas/{id}")
     public ResponseEntity<CitaDTO> update(@PathVariable Long id, @RequestBody Cita login) {
         try {
             Cita citaActualizado = citaRepository.findById(id).orElse(null);
@@ -130,7 +130,7 @@ public class CitaController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/cita/{id}")
+    @DeleteMapping("/citas/{id}")
     public ResponseEntity<CitaDTO> delete(@PathVariable Long id) {
         try {
             Cita cita = citaRepository.findById(id).orElse(null);
