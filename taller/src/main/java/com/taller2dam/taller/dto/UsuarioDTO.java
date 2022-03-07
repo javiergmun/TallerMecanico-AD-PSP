@@ -20,9 +20,6 @@ public class UsuarioDTO {
     @NotBlank(message = "Debes introducir un nombre")
     private String username;
 
-   //@NotBlank(message = "Debes indicar si es un administrador")
-   // private Boolean administrador;
-
     @NotBlank(message = "Debes introducir un telefono")
     private String telefono;
 
@@ -32,7 +29,6 @@ public class UsuarioDTO {
     /*
     @NotBlank(message = "Debes introducir una dirección")
     private Direccion direccion;
-
      */
     private String direccion;
 

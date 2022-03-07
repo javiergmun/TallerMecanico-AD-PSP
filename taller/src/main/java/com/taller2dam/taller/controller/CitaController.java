@@ -108,7 +108,6 @@ public class CitaController {
         }
     }
 
-
     @ApiOperation(value = "Actualizar un cita", notes = "Actualiza un cita por id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = CitaDTO.class),
@@ -155,7 +154,6 @@ public class CitaController {
             throw new RuntimeException("Eliminar, Error al borrar el cita");
         }
     }
-
 
     private void checkCitaData(Cita cita) {
 
