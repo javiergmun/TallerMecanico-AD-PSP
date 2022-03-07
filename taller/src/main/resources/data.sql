@@ -10,7 +10,7 @@ VALUES(3,false,'ytf');
 
 INSERT INTO USUARIO(correo, dni, nombre, contraseña, imagen, telefono, direccion)
 VALUES
-       ('admin@admin.com', '787856P', 'Jose', '5685tygku', 'imagen1', '58568668', 'Paseo de la Ermita,9,28914,Leganes'),
+       ('admin@admin.com', '787856P', 'Jose', '1234', 'imagen1', '58568668', 'Paseo de la Ermita,9,28914,Leganes'),
        ('user1@user.com', '234532U', 'Jorge', '5685tygku', 'imagen2', '65464654', 'Calle Miraflores,10,28914,Leganes'),
        ('user2@user.com', '675432Y', 'Juanma', '5685tygku', 'imagen3', '90998888', 'Avenida Maria Guerrero,2,28914,Leganes'),
        ('javier@user.com', '764432M', 'Javier', '5685tygku', 'imagen4', '32214355', 'Avenida Maria Guerrero,3,28914,Leganes'),

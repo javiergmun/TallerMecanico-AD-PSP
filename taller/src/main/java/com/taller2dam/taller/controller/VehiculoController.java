@@ -6,6 +6,7 @@ import com.taller2dam.taller.dto.VehiculoDTO;
 import com.taller2dam.taller.mapper.VehiculoMapper;
 import com.taller2dam.taller.repository.VehiculoRepository;
 import com.taller2dam.taller.service.VehiculoService;
+import com.taller2dam.taller.upload.StorageService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -18,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,12 +31,14 @@ public class VehiculoController {
     private final VehiculoRepository vehiculoRepository;
     private final VehiculoService vehiculoService;
     private final VehiculoMapper vehiculoMapper;
+    private final StorageService storageService;
 
     @Autowired
-    public VehiculoController(VehiculoRepository vehiculoRepository, VehiculoService vehiculoService, VehiculoMapper vehiculoMapper) {
+    public VehiculoController(VehiculoRepository vehiculoRepository, VehiculoService vehiculoService, VehiculoMapper vehiculoMapper, StorageService storageService) {
         this.vehiculoRepository = vehiculoRepository;
         this.vehiculoService = vehiculoService;
         this.vehiculoMapper = vehiculoMapper;
+        this.storageService = storageService;
     }
 
     // @CrossOrigin(origins = "http://localhost:6969") //
@@ -194,7 +198,7 @@ public class VehiculoController {
             throw new RuntimeException("El color es obligatorio");
         }
         //if (vehiculo.getPropietario() == null || vehiculo.getPropietario().getNombre().isEmpty()) {
-          //  throw new RuntimeException("El propiertario es obligatorio");
+        //  throw new RuntimeException("El propiertario es obligatorio");
         //}
 
     }
@@ -209,13 +213,19 @@ public class VehiculoController {
             @RequestPart("vehiculo") VehiculoDTO vehiculoDTO,
             @RequestPart("file") MultipartFile file) {
 
+        // Almacenamos el fichero y obtenemos su URL
+        String urlImagen = null;
+
         try {
             // Comprobamos los campos obligatorios
             Vehiculo vehiculo = vehiculoMapper.fromDTO(vehiculoDTO);
             checkVehiculoData(vehiculo);
 
             if (!file.isEmpty()) {
-                String imagen = file.toString();
+                String imagen = storageService.store(file);
+                urlImagen = MvcUriComponentsBuilder
+                        .fromMethodName(FicherosController.class, "serveFile", imagen, null)
+                        .build().toUriString();
                 vehiculo.setImagen(imagen);
             }
             Vehiculo vehiculoInsertado = vehiculoRepository.save(vehiculo);
