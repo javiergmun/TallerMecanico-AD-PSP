@@ -1,6 +1,8 @@
 package com.taller2dam.taller.controller;
 
 import com.taller2dam.taller.dao.Cita;
+import com.taller2dam.taller.dao.Usuario;
+import com.taller2dam.taller.dao.users.UserRole;
 import com.taller2dam.taller.dto.CitaDTO;
 import com.taller2dam.taller.mapper.CitaMapper;
 import com.taller2dam.taller.repository.CitaRepository;
@@ -36,13 +38,22 @@ public class CitaController {
     })
     @GetMapping("/citas")
     public ResponseEntity<List<CitaDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
-                                                  @RequestParam(required = false, name = "nombre") Optional<String> nombre) {
+                                                 @RequestParam(required = false, name = "nombre") Optional<String> nombre,
+                                                // @AuthenticationPrincipal Usuario user
+    ) {
         List<Cita> cita = null;
         try {
+          // if (user.getRoles().contains(UserRole.ADMIN)) {
+          //     cita = citaRepository.findAll();
+          // } else {
+          //     cita = citaRepository.findAllByUsuario(user).get();
+          // }
+
+
             if (nombre.isPresent()) {
                 //cita = CitaRepository.findByNombreContainsIgnoreCase(nombre.get());
             } else {
-                cita = citaRepository.findAll();
+                // cita = citaRepository.findAll();
             }
 
             if (limit.isPresent() && !cita.isEmpty() && cita.size() > Integer.parseInt(limit.get())) {
@@ -148,7 +159,7 @@ public class CitaController {
 
     private void checkCitaData(Cita cita) {
 
-        if (cita.getServicio() == null || cita.getMecanico()== null) {
+        if (cita.getServicio() == null || cita.getMecanico() == null) {
             throw new RuntimeException("La marca es obligatoria y necesitas un mecanico que lo realice");
         }
 

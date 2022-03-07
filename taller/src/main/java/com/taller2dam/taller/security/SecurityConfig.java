@@ -61,7 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                    // .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
                    // .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
 //
-                   // .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole( "ADMIN")
+                // .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("USER", "ADMIN")
+                // .antMatchers(HttpMethod.POST, "/usuarios/**").hasRole("ADMIN")
+                // .antMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("ADMIN")
+                // .antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN")
+
 
                 //sobre cualquier otra petición no reflejada solo pediremos que esté autenticado
                     .anyRequest().not().authenticated();

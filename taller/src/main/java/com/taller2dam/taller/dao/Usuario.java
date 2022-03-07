@@ -1,7 +1,6 @@
 package com.taller2dam.taller.dao;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.taller2dam.taller.dao.users.UserRole;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
