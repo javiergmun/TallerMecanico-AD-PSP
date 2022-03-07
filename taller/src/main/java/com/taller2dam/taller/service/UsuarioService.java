@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
-    UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
     //CONSULTAS CRUD BÁSICAS
