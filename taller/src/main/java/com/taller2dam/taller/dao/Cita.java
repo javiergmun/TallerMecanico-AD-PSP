@@ -18,7 +18,7 @@ public class Cita {
 
     private long id;
     //private Double precio;
-    private LocalDateTime fecha;
+    private String fecha;
     private Usuario usuario;
     private Mecanico mecanico;
     private Servicio servicio;
@@ -35,13 +35,12 @@ public class Cita {
     }
 
     @Basic
-    @CreationTimestamp
     @Column(name = "fecha")
-    public LocalDateTime getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
