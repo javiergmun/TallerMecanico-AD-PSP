@@ -159,8 +159,8 @@ public class CitaController {
 
     private void checkCitaData(Cita cita) {
 
-        if (cita.getServicio() == null || cita.getMecanico() == null) {
-            throw new RuntimeException("La marca es obligatoria y necesitas un mecanico que lo realice");
+        if (cita.getFecha()== null) {
+            throw new RuntimeException("La fecha es obligatoria");
         }
 
     }
