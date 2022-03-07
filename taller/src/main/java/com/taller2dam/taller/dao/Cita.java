@@ -22,6 +22,7 @@ public class Cita {
     private Usuario usuario;
     private Mecanico mecanico;
     private Servicio servicio;
+    private Vehiculo vehiculo;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,13 +33,6 @@ public class Cita {
     public void setId(long id) {
         this.id = id;
     }
-/*
-    @Basic
-    @Column(name = "precio")
-    public Double getPrecio() {return precio;}
-    public void setPrecio(Double precio) {this.precio = precio;}
-
- */
 
     @Basic
     @CreationTimestamp
@@ -79,6 +73,16 @@ public class Cita {
 
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "vehiculo_del_usuario", referencedColumnName = "id")
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
     @Override
