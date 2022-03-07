@@ -38,7 +38,7 @@ public class CitaController {
     })
     @GetMapping("/citas")
     public ResponseEntity<List<CitaDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
-                                                 @RequestParam(required = false, name = "nombre") Optional<String> nombre,
+                                                 @RequestParam(required = false, name = "nombre") Optional<String> nombre
                                                 // @AuthenticationPrincipal Usuario user
     ) {
         List<Cita> cita = null;
@@ -53,7 +53,7 @@ public class CitaController {
             if (nombre.isPresent()) {
                 //cita = CitaRepository.findByNombreContainsIgnoreCase(nombre.get());
             } else {
-                // cita = citaRepository.findAll();
+                 cita = citaRepository.findAll();
             }
 
             if (limit.isPresent() && !cita.isEmpty() && cita.size() > Integer.parseInt(limit.get())) {
