@@ -18,12 +18,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Configuration
+@Configuration
 //@EnableSwagger2
 public class SwaggerConfig {
 
 
-   // @Bean
+    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -33,7 +33,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
-   // @Bean
+    @Bean
     public ApiInfo apiInfo() {
 
         return new ApiInfoBuilder()
