@@ -51,20 +51,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                     .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                    .antMatchers(HttpMethod.GET, "/mecanicos/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.POST, "/mecanicos/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.PUT, "/mecanicos/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.DELETE, "/mecanicos/**").hasRole("ADMIN")
-
-                    .antMatchers(HttpMethod.GET, "/servicios/**").hasAnyRole("USER", "ADMIN")
-                    .antMatchers(HttpMethod.POST, "/servicios/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
-
-                    .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole( "ADMIN")
+                   // .antMatchers(HttpMethod.GET, "/mecanicos/**").hasRole("ADMIN")
+                   // .antMatchers(HttpMethod.POST, "/mecanicos/**").hasRole("ADMIN")
+                   // .antMatchers(HttpMethod.PUT, "/mecanicos/**").hasRole("ADMIN")
+                   // .antMatchers(HttpMethod.DELETE, "/mecanicos/**").hasRole("ADMIN")
+//
+                   // .antMatchers(HttpMethod.GET, "/servicios/**").hasAnyRole("USER", "ADMIN")
+                   // .antMatchers(HttpMethod.POST, "/servicios/**").hasRole("ADMIN")
+                   // .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
+                   // .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
+//
+                   // .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole( "ADMIN")
 
                 //sobre cualquier otra petición no reflejada solo pediremos que esté autenticado
-                    .anyRequest().authenticated();
+                    .anyRequest().not().authenticated();
 
         //Añadimos el filtro
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
