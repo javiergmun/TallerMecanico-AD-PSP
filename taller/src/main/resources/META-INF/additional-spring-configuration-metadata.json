@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "upload.root-location",
+      "type": "java.lang.String",
+      "description": "Description for upload.root-location."
+    }
+
+  ] }
