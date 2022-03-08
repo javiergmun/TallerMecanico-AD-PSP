@@ -50,25 +50,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                   // .antMatchers(HttpMethod.GET, "/mecanicos/**").hasRole("ADMIN")
-                   // .antMatchers(HttpMethod.POST, "/mecanicos/**").hasRole("ADMIN")
-                   // .antMatchers(HttpMethod.PUT, "/mecanicos/**").hasRole("ADMIN")
-                   // .antMatchers(HttpMethod.DELETE, "/mecanicos/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/mecanicos/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/mecanicos/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/mecanicos/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/mecanicos/**").hasRole("ADMIN")
 //
-                   // .antMatchers(HttpMethod.GET, "/servicios/**").hasAnyRole("USER", "ADMIN")
-                   // .antMatchers(HttpMethod.POST, "/servicios/**").hasRole("ADMIN")
-                   // .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
-                   // .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/servicios/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/servicios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/servicios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/servicios/**").hasRole("ADMIN")
 //
-                // .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("USER", "ADMIN")
-                // .antMatchers(HttpMethod.POST, "/usuarios/**").hasRole("ADMIN")
-                // .antMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("ADMIN")
-                // .antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/usuarios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN")
 
 
                 //sobre cualquier otra petición no reflejada solo pediremos que esté autenticado
-                    .anyRequest().not().authenticated();
+                .anyRequest().authenticated();
 
         //Añadimos el filtro
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);

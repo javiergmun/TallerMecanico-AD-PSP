@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,23 +39,18 @@ public class CitaController {
     })
     @GetMapping("/citas")
     public ResponseEntity<List<CitaDTO>> findAll(@RequestParam(required = false, name = "limit") Optional<String> limit,
-                                                 @RequestParam(required = false, name = "nombre") Optional<String> nombre
-                                                // @AuthenticationPrincipal Usuario user
+                                                 @RequestParam(required = false, name = "nombre") Optional<String> nombre,
+                                                 @AuthenticationPrincipal Usuario user
     ) {
         List<Cita> cita = null;
         try {
-          // if (user.getRoles().contains(UserRole.ADMIN)) {
-          //     cita = citaRepository.findAll();
-          // } else {
-          //     cita = citaRepository.findAllByUsuario(user).get();
-          // }
-
-
-            if (nombre.isPresent()) {
-                //cita = CitaRepository.findByNombreContainsIgnoreCase(nombre.get());
-            } else {
-                 cita = citaRepository.findAll();
-            }
+           if (user.getRoles().contains(UserRole.ADMIN)) {
+               if (!nombre.isPresent()) {
+                   cita = citaRepository.findAll();
+               }
+           } else {
+               cita = citaRepository.findAllByUsuario(user).get();
+           }
 
             if (limit.isPresent() && !cita.isEmpty() && cita.size() > Integer.parseInt(limit.get())) {
 
