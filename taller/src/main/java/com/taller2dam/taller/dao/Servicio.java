@@ -22,44 +22,86 @@ public class Servicio {
     private Double precio;
     private String tipo;
     private Double tiempo;
-    private LocalDateTime fecha_inicio;
-    private LocalDateTime fecha_fin;
-    private Set<Pieza> repuestos;   //recambios o materiales de nuestro taller (sino gusta se puede quitar)
+    private String imagen;
+    private String bitmap; //Para la imagen de android
+    private String descripcion;
+    //private LocalDateTime fecha_inicio;
+    //private LocalDateTime fecha_fin;
 
     @Id
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Basic
     @Column(name = "precio")
-    public Double getPrecio() {return precio;}
-    public void setPrecio(Double precio) {this.precio = precio;}
+    public Double getPrecio() {
+        return precio;
+    }
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
     @Basic
     @Column(name = "tipo")
-    public String getTipo() {return tipo;}
-    public void setTipo(String tipo) {this.tipo = tipo;}
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     @Basic
     @Column(name = "tiempo")
-    public Double getTiempo() {return tiempo;}
-    public void setTiempo(Double tiempo) {this.tiempo = tiempo;}
+    public Double getTiempo() {
+        return tiempo;
+    }
+    public void setTiempo(Double tiempo) {
+        this.tiempo = tiempo;
+    }
 
+    @Basic
+    @Column(name = "imagen")
+    public String getImagen() {return imagen;}
+    public void setImagen(String imagen) {this.imagen = imagen;}
+
+    @Basic
+    @Column(name = "bitmap")
+    public String getBitmap() {return bitmap;}
+    public void setBitmap(String bitmap) {this.bitmap = bitmap;}
+
+    @Basic
+    @Column(name = "descripcion")
+    public String getDescripcion() {return descripcion;}
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+
+    /*
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_inicio")
-    public LocalDateTime getFecha_inicio() {return fecha_inicio;}
-    public void setFecha_inicio(LocalDateTime fecha_inicio) {this.fecha_inicio = fecha_inicio;}
+    public LocalDateTime getFecha_inicio() {
+        return fecha_inicio;
+    }
+    public void setFecha_inicio(LocalDateTime fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
 
     @Basic
     @CreationTimestamp
     @Column(name = "fecha_fin")
-    public LocalDateTime getFecha_fin() {return fecha_fin;}
-    public void setFecha_fin(LocalDateTime fecha_fin) {this.fecha_fin = fecha_fin;}
+    public LocalDateTime getFecha_fin() {
+        return fecha_fin;
+    }
+    public void setFecha_fin(LocalDateTime fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "servicio", cascade = CascadeType.REMOVE)    //Ver Tipo de Cascada
-    public Set<Pieza> getRepuestos() {return repuestos;}
-    public void setRepuestos(Set<Pieza> repuestos) {this.repuestos = repuestos;}
+ */
+
 
     @Override
     public String toString() {
@@ -68,9 +110,9 @@ public class Servicio {
                 ", precio=" + precio +
                 ", tipo='" + tipo + '\'' +
                 ", tiempo=" + tiempo +
-                ", fecha_inicio=" + fecha_inicio +
-                ", fecha_fin=" + fecha_fin +
-                ", repuestos=" + repuestos +
+                ", imagen='" + imagen + '\'' +
+                ", bitmap='" + bitmap + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

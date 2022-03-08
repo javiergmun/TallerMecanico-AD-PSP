@@ -14,23 +14,26 @@ import java.util.UUID;
 public class Login {
 
     private long id;
-    private String correo;
-    private String password;    //Cifrarla o hacer que no se muestre
+    private Boolean activo;
     private String token;
+    //private Usuario usuario;
 
     @Id
+    @GeneratedValue
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
     @Basic
-    @Column(name = "correo")
-    public String getCorreo() {return correo;}
-    public void setCorreo(String email) {this.correo = email;}
+    @Column(name="esta_activo")
+    public Boolean getActivo() {return activo;}
+    public void setActivo(Boolean activo) {this.activo = activo;}
+/*
+    @OneToOne
+    @JoinColumn(name = "usuario", referencedColumnName = "id")
+    public Usuario getUsuario() {return usuario;}
+    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
 
-    @Basic
-    @Column(name = "contraseña")
-    public String getPassword() {return password;}
-    public void setPassword(String password) {this.password = password;}
+ */
 
     @Basic
     @Column(name = "token")
@@ -39,10 +42,9 @@ public class Login {
 
     @Override
     public String toString() {
-        return "Login{" +
+        return "Login:{" +
                 "id=" + id +
-                ", correo='" + correo + '\'' +
-                ", password='" + password + '\'' +
+                ", activo=" + activo +
                 ", token='" + token + '\'' +
                 '}';
     }

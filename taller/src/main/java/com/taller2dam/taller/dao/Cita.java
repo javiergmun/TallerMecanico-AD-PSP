@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
@@ -18,47 +17,77 @@ import java.util.UUID;
 public class Cita {
 
     private long id;
-    private Double precio;
-    private LocalDateTime fecha;
+    //private Double precio;
+    private String fecha;
     private Usuario usuario;
     private Mecanico mecanico;
     private Servicio servicio;
+    private Vehiculo vehiculo;
 
     @Id
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Basic
-    @Column(name = "precio")
-    public Double getPrecio() {return precio;}
-    public void setPrecio(Double precio) {this.precio = precio;}
-
-    @Basic
-    @CreationTimestamp
     @Column(name = "fecha")
-    public LocalDateTime getFecha() {return fecha;}
-    public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     @OneToOne
     @JoinColumn(name = "cliente", referencedColumnName = "id")
-    public Usuario getUsuario() {return usuario;}
-    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     @OneToOne
     @JoinColumn(name = "mecanico", referencedColumnName = "id")
-    public Mecanico getMecanico() {return mecanico;}
-    public void setMecanico(Mecanico mecanico) {this.mecanico = mecanico;}
+    public Mecanico getMecanico() {
+        return mecanico;
+    }
+
+    public void setMecanico(Mecanico mecanico) {
+        this.mecanico = mecanico;
+    }
 
     @OneToOne
-    @JoinColumn(name = "servicio", referencedColumnName = "id")
-    public Servicio getServicio() {return servicio;}
-    public void setServicio(Servicio servicio) {this.servicio = servicio;}
+    @JoinColumn(name = "servicio_contratado", referencedColumnName = "id")
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "vehiculo_del_usuario", referencedColumnName = "id")
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     @Override
     public String toString() {
-        return "Ticket{" +
+        return "Cita{" +
                 "id=" + id +
-                ", precio=" + precio +
                 ", fecha=" + fecha +
                 ", usuario=" + usuario +
                 ", mecanico=" + mecanico +
